@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AGP Control – Siemens Schulungen</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f0f2f5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem;
+    }
+
+    /* ── Login-Overlay ── */
+    #login-overlay {
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,0.45);
+      display: flex; align-items: center; justify-content: center;
+      z-index: 100;
+    }
+    .login-box {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+      padding: 2.5rem 2.5rem 2rem;
+      width: 360px;
+      display: flex; flex-direction: column; gap: 1.2rem;
+    }
+    .login-box h2 { color: #009999; font-size: 1.2rem; font-weight: 700; text-align: center; }
+    .login-box p  { font-size: 0.85rem; color: #666; text-align: center; }
+    .login-box input[type=password] {
+      width: 100%; padding: 0.6rem 0.8rem;
+      border: 1px solid #ccc; border-radius: 6px;
+      font-size: 0.95rem; outline: none;
+    }
+    .login-box input[type=password]:focus { border-color: #009999; }
+    .login-box label { font-size: 0.85rem; color: #555; display: block; margin-bottom: 0.3rem; }
+    .login-box select {
+      width: 100%; padding: 0.5rem 0.7rem;
+      border: 1px solid #ccc; border-radius: 6px;
+      font-size: 0.88rem; background: #fff;
+    }
+    .btn-login {
+      background: #009999; color: #fff;
+      border: none; border-radius: 6px;
+      padding: 0.65rem; font-size: 0.95rem;
+      cursor: pointer; font-weight: 600;
+      transition: background 0.2s;
+    }
+    .btn-login:hover { background: #007777; }
+    .login-error { color: #c62828; font-size: 0.83rem; text-align: center; display: none; }
+    .back-link { text-align: center; font-size: 0.82rem; }
+    .back-link a { color: #009999; text-decoration: none; }
+
+    /* ── Hauptinhalt ── */
+    #main-content { width: 100%; max-width: 860px; }
+    header { text-align: center; margin-bottom: 2rem; }
+    header h1 { font-size: 2rem; color: #009999; font-weight: 700; }
+    header p  { margin-top: 0.4rem; color: #555; font-size: 0.95rem; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.2rem;
+    }
+    .card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.09);
+      padding: 1.8rem 1.5rem;
+      text-decoration: none; color: inherit;
+      transition: box-shadow 0.2s, transform 0.2s;
+      display: flex; flex-direction: column; gap: 0.6rem;
+    }
+    .card:hover { box-shadow: 0 6px 20px rgba(0,153,153,0.2); transform: translateY(-3px); }
+    .card-icon { font-size: 1.8rem; }
+    .card h2   { font-size: 1rem; font-weight: 700; color: #009999; }
+    .card p    { font-size: 0.85rem; color: #666; line-height: 1.5; }
+
+    .toolbar {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 1.5rem;
+    }
+    .unlock-info { font-size: 0.82rem; color: #666; }
+    .btn-lock {
+      background: none; border: 1px solid #ccc;
+      border-radius: 6px; padding: 0.3rem 0.8rem;
+      font-size: 0.8rem; cursor: pointer; color: #666;
+      transition: background 0.2s;
+    }
+    .btn-lock:hover { background: #f5f5f5; }
+    .back-nav { margin-top: 2rem; text-align: center; font-size: 0.85rem; }
+    .back-nav a { color: #009999; text-decoration: none; }
+    footer { margin-top: 2rem; color: #aaa; font-size: 0.82rem; }
+  </style>
+</head>
+<body>
+
+  <!-- ══ Login-Overlay ══ -->
+  <div id="login-overlay">
+    <div class="login-box">
+      <h2>🏭 Siemens Schulungen</h2>
+      <p>Bitte Passwort eingeben um fortzufahren.</p>
+
+      <div>
+        <label>Passwort</label>
+        <input type="password" id="pw-input" placeholder="Passwort" />
+      </div>
+
+      <div>
+        <label>Entsperren für</label>
+        <select id="duration-select">
+          <option value="2">2 Stunden</option>
+          <option value="4" selected>4 Stunden</option>
+          <option value="8">8 Stunden</option>
+          <option value="24">24 Stunden</option>
+        </select>
+      </div>
+
+      <button class="btn-login" onclick="doLogin()">Entsperren</button>
+      <div class="login-error" id="login-error">Falsches Passwort. Bitte erneut versuchen.</div>
+      <div class="back-link"><a href="index.html">← Zurück zur Startseite</a></div>
+    </div>
+  </div>
+
+  <!-- ══ Hauptinhalt (nach Login sichtbar) ══ -->
+  <div id="main-content" style="display:none">
+    <header>
+      <h1>Siemens Schulungen</h1>
+      <p>Interaktive Werkzeuge für Regelungstechnik-Schulungen</p>
+    </header>
+
+    <div class="toolbar">
+      <span class="unlock-info" id="unlock-info"></span>
+      <button class="btn-lock" onclick="doLock()">🔒 Sitzung beenden</button>
+    </div>
+
+    <div class="grid">
+
+      <a class="card" href="https://pt1tt-wendetangente-2.agpcontrol.com/">
+        <div class="card-icon">📐</div>
+        <h2>PT1TT – Wendetangente</h2>
+        <p>Berechnung der PT1TT-Parameter mit der Tangenten- und Wendetangentenmethode.</p>
+      </a>
+
+      <a class="card" href="https://pt1tt-3pkt.netlify.app/">
+        <div class="card-icon">📍</div>
+        <h2>PT1TT – 3-Punkt-Methode</h2>
+        <p>Berechnung der PT1TT-Parameter mit der 3-Punkt-Methode.</p>
+      </a>
+
+      <a class="card" href="https://pt1tt-tangent.netlify.app/">
+        <div class="card-icon">📈</div>
+        <h2>PT1TT – Tangente (Einspeicher)</h2>
+        <p>Berechnung der PT1TT-Parameter eines Einspeichersystems mit der Tangentenmethode.</p>
+      </a>
+
+    </div>
+
+    <div class="back-nav"><a href="index.html">← Zurück zur Startseite</a></div>
+  </div>
+
+  <footer id="footer" style="display:none">agpcontrol.com &nbsp;|&nbsp; Siemens Schulungen</footer>
+
+  <script>
+    // ── Konfiguration ────────────────────────────────────────────────────────
+    // Passwort ändern: neuen SHA-256 Hash hier eintragen.
+    // Hash berechnen: https://emn178.github.io/online-tools/sha256.html
+    // Aktuelles Passwort: Siemens2025
+    const PW_HASH = '98775c2feda5b5566015a7fd3017a2ed098dde7edb15b7ee7400a85a41e7d1b4';
+    const STORAGE_KEY = 'agpcontrol_siemens_unlock';
+    // ────────────────────────────────────────────────────────────────────────
+
+    async function sha256(msg) {
+      const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(msg));
+      return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
+    }
+
+    function showContent(expiryMs) {
+      document.getElementById('login-overlay').style.display = 'none';
+      document.getElementById('main-content').style.display = 'block';
+      document.getElementById('footer').style.display = 'block';
+      const remaining = Math.round((expiryMs - Date.now()) / 3600000 * 10) / 10;
+      document.getElementById('unlock-info').textContent =
+        `Entsperrt für ${remaining} h (bis ${new Date(expiryMs).toLocaleTimeString('de-DE', {hour:'2-digit', minute:'2-digit'})})`;
+    }
+
+    function checkSession() {
+      const expiry = parseInt(localStorage.getItem(STORAGE_KEY) || '0');
+      if (expiry > Date.now()) { showContent(expiry); return true; }
+      return false;
+    }
+
+    async function doLogin() {
+      const pw = document.getElementById('pw-input').value;
+      const hash = await sha256(pw);
+      if (hash === PW_HASH) {
+        const hours = parseInt(document.getElementById('duration-select').value);
+        const expiry = Date.now() + hours * 3600000;
+        localStorage.setItem(STORAGE_KEY, expiry.toString());
+        document.getElementById('login-error').style.display = 'none';
+        showContent(expiry);
+      } else {
+        document.getElementById('login-error').style.display = 'block';
+        document.getElementById('pw-input').value = '';
+        document.getElementById('pw-input').focus();
+      }
+    }
+
+    function doLock() {
+      localStorage.removeItem(STORAGE_KEY);
+      document.getElementById('main-content').style.display = 'none';
+      document.getElementById('footer').style.display = 'none';
+      document.getElementById('login-overlay').style.display = 'flex';
+      document.getElementById('pw-input').value = '';
+    }
+
+    // Enter-Taste im Passwortfeld
+    document.getElementById('pw-input').addEventListener('keydown', e => {
+      if (e.key === 'Enter') doLogin();
+    });
+
+    // Beim Laden prüfen ob Sitzung noch gültig
+    checkSession();
+  </script>
+
+</body>
+</html>

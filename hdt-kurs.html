@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HdT Seminar – Regelungstechnik: Praxisbezogene Auslegung von Reglern</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f0f2f5;
+      min-height: 100vh;
+      display: flex; flex-direction: column; align-items: center;
+      padding: 2rem 1rem;
+    }
+    .container { width: 100%; max-width: 820px; }
+    header { text-align: center; margin-bottom: 2rem; }
+    header h1 { font-size: 1.8rem; color: #1565c0; font-weight: 700; line-height: 1.3; }
+    header p  { margin-top: 0.5rem; color: #666; font-size: 0.92rem; }
+
+    .card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      padding: 1.8rem 2rem;
+      margin-bottom: 1.2rem;
+    }
+    .card h2 {
+      font-size: 1rem; font-weight: 700; color: #1565c0;
+      margin-bottom: 0.8rem; text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .card p  { font-size: 0.9rem; color: #444; line-height: 1.7; margin-bottom: 0.6rem; }
+    .card p:last-child { margin-bottom: 0; }
+
+    ol { padding-left: 1.2rem; }
+    ol li {
+      font-size: 0.9rem; color: #444; line-height: 1.6;
+      margin-bottom: 0.5rem;
+    }
+    .highlight {
+      background: #e3f2fd; border-left: 4px solid #1565c0;
+      border-radius: 0 6px 6px 0;
+      padding: 0.8rem 1rem;
+      font-size: 0.9rem; color: #1a237e;
+      margin-top: 0.8rem;
+    }
+    .back-nav { text-align: center; margin-top: 1.5rem; font-size: 0.85rem; }
+    .back-nav a { color: #1565c0; text-decoration: none; }
+    footer { margin-top: 1.5rem; color: #aaa; font-size: 0.82rem; text-align: center; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <h1>Regelungstechnik:<br>Praxisbezogene Auslegung von Reglern</h1>
+    <p>HdT-Seminar &nbsp;|&nbsp; Prof. Dr.-Ing. Axel Graeser</p>
+  </header>
+
+  <div class="card">
+    <h2>Zum Thema</h2>
+    <p>
+      PI/PID-Regler bilden das regelungstechnische Rückgrat in der Automatisierungstechnik.
+      Basis für eine Reglereinstellung ist eine Grundkenntnis über die Struktur und die
+      Parameter der Regelstrecke. Für die Wahl der Reglerparameter gibt es einerseits eine
+      Reihe von theoretisch gut begründeten Einstellregeln, andererseits finden sich in der
+      Literatur auch tabellarische Einstellregeln, die zu einem weniger guten Verhalten führen.
+    </p>
+    <p>
+      Im Kurs werden aufeinander abgestimmte Methoden zur Parameterbestimmung der Regelstrecke
+      und zur Einstellung der Reglerparameter vorgestellt. Die Teilnehmer können diese Verfahren
+      mittels Rechnersimulationen einüben und die Vorgehensweise vertiefen.
+    </p>
+    <p>
+      Das Seminar setzt gezielt an praktischen Problemen an und vermittelt das notwendige
+      Basiswissen, um Regler einzusetzen und mit einfach nutzbaren Einstellregeln zu optimieren.
+    </p>
+    <div class="highlight">
+      Ca. <strong>60 % der Seminarzeit</strong> sind praktischen Rechnersimulationen gewidmet.
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Inhalt</h2>
+    <ol>
+      <li>Steuerung, Regelung, Blockschaltbild – P/PI/PID/PIDT1-Regler und ihr wesentliches Zeitverhalten, digitale Regler, Auswirkungen der Abtastzeit</li>
+      <li>Sprungantwort von Regelstrecken – Methoden zur Nachbildung mit Modellen niedriger Ordnung; Simulation verschiedener Regelstrecken, Bestimmung der Streckenparameter</li>
+      <li>Auswahl von Reglern für verschiedene Streckenklassen – Parametrierungsverfahren, Simulation geschlossener Regelkreise, Führungs- und Störverhalten</li>
+      <li>Erreichbare Genauigkeit für einschleifige Regelkreise – Gleichgewichtstheorem, Auswirkung von Störungen unterschiedlicher Frequenz</li>
+      <li>Kaskadenregelung – Prinzipien, Einstellregeln, erreichbare Genauigkeiten; Simulation von Kaskadenregelkreisen</li>
+      <li>Störgrößenaufschaltung – Prinzipien, Einstellregeln, Kombination mit Kaskadenregelung</li>
+      <li>Auswirkung von Begrenzungen der Stellglieder – Wind-Up, Anti-Windup-Konzepte; Simulation und Vergleich unterschiedlicher Methoden</li>
+      <li>Mehrgrößenregelungen – Strukturen, Entkopplung, Einstellregeln; Simulation von Mehrgrößenregelkreisen</li>
+      <li><strong>NEU:</strong> Selbsteinstellende Regler – Parametersteuerung und Iterative Feedback Tuning (IFT)</li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <h2>Zielsetzung</h2>
+    <p>
+      Das Seminar vermittelt grundlegende Kenntnisse zur Regelungstechnik und verzahnt diese
+      mit praktischen Erfahrungen durch Rechnersimulationen und Laborversuche. Teilnehmer
+      lernen, Regelkreise systematisch auszulegen und typische Probleme in der Praxis zu lösen.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>Methode</h2>
+    <p>
+      Die Teilnehmer arbeiten am Rechner und simulieren mehrere typische Regelstrecken –
+      von der idealisierten Vereinfachung bis zu komplexen inneren Zusammenhängen.
+      Dadurch gelingt es, schnell zu erkennen, wie sich verschiedene Einflüsse im
+      Regelergebnis zeigen und wie negative Einflüsse durch verbesserte Regelparameter
+      oder erweiterte Regelkreisstrukturen verringert werden können.
+    </p>
+    <p>
+      Den Anteil der Diskussionen eigener Fragestellungen können die Teilnehmer in
+      einem gewissen Rahmen selbst steuern.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>Teilnehmerkreis</h2>
+    <p>
+      Techniker und Ingenieure der Fachrichtungen Elektrotechnik, Elektronik,
+      Kfz-Technik, Maschinenbau, Verfahrenstechnik und Chemie, die für die
+      Auslegung, Inbetriebnahme und den laufenden Betrieb und laufende
+      Verbesserungen von Regelungen zuständig sind.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>Hinweise</h2>
+    <p>
+      Die Seminarteilnehmer erhalten die Simulationsbeispiele (basierend auf
+      MATLAB/Simulink und teilweise auf der lizenzfreien Software Scilab)
+      digital zur weiteren eigenen Nutzung nach Abschluss des Kurses.
+    </p>
+  </div>
+
+  <div class="back-nav"><a href="index.html">← Zurück zur Startseite</a></div>
+  <footer>agpcontrol.com &nbsp;|&nbsp; HdT Seminar Regelungstechnik</footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AGP Control – Regelungstechnik</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f0f2f5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    header h1 { font-size: 2.2rem; color: #1565c0; font-weight: 700; letter-spacing: 1px; }
+    header p  { margin-top: 0.4rem; color: #555; font-size: 1.05rem; }
+
+    .section { width: 100%; max-width: 860px; margin-bottom: 2rem; }
+
+    /* Kurzbeschreibung */
+    .description {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      padding: 1.5rem 2rem;
+    }
+    .description h2 { font-size: 1rem; color: #1565c0; font-weight: 700; margin-bottom: 0.6rem; }
+    .description p  { font-size: 0.9rem; color: #444; line-height: 1.6; margin-bottom: 0.5rem; }
+    .description a  { color: #1565c0; font-size: 0.88rem; }
+
+    /* Schulungs-Karten */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.2rem;
+    }
+    .card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.09);
+      padding: 2rem 1.5rem;
+      text-decoration: none;
+      color: inherit;
+      transition: box-shadow 0.2s, transform 0.2s;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .card:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.15); transform: translateY(-3px); }
+    .card-icon { font-size: 2rem; }
+    .card h2   { font-size: 1.1rem; font-weight: 700; }
+    .card p    { font-size: 0.88rem; color: #666; line-height: 1.5; }
+    .card .tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      padding: 2px 10px;
+      border-radius: 20px;
+      margin-top: 0.3rem;
+      width: fit-content;
+    }
+    .siemens h2  { color: #009999; }
+    .siemens .tag { background: #e0f7f7; color: #009999; }
+    .hdt h2      { color: #1565c0; }
+    .hdt .tag    { background: #e3f2fd; color: #1565c0; }
+
+    /* Kontakt */
+    .contact {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      padding: 1.5rem 2rem;
+    }
+    .contact h2 { font-size: 1rem; color: #1565c0; font-weight: 700; margin-bottom: 0.8rem; }
+    .contact p  { font-size: 0.88rem; color: #444; line-height: 1.8; }
+    .contact a  { color: #1565c0; text-decoration: none; }
+    .contact a:hover { text-decoration: underline; }
+
+    footer { margin-top: 1rem; color: #aaa; font-size: 0.82rem; text-align: center; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>AGP Control</h1>
+    <p>Interaktive Werkzeuge für Regelungstechnik-Schulungen</p>
+  </header>
+
+  <!-- Kurzbeschreibung HdT -->
+  <div class="section">
+    <div class="description">
+      <h2>Regelungstechnik: Praxisbezogene Auslegung von Reglern</h2>
+      <p>
+        Praxisorientiertes Seminar zur Auslegung von PI/PID-Reglern – von der
+        Parameterbestimmung der Regelstrecke bis zur Regleroptimierung.
+        Aufeinander abgestimmte Methoden zur Streckenidentifikation und
+        theoretisch fundierte Einstellregeln für Reglerparameter werden
+        vermittelt und durch Rechnersimulationen (ca. 60&nbsp;% der Seminarzeit)
+        direkt eingeübt.
+      </p>
+      <p>
+        Themen: PI/PID-Regler, Sprungantwort-Analyse, Kaskadenregelung,
+        Störgrößenaufschaltung, Anti-Windup, Mehrgrößenregelung.
+      </p>
+      <a href="hdt-kurs.html">→ Vollständige Kursbeschreibung</a>
+    </div>
+  </div>
+
+  <!-- Schulungs-Karten -->
+  <div class="section">
+    <div class="grid">
+      <a class="card siemens" href="siemens.html">
+        <div class="card-icon">🏭</div>
+        <h2>Siemens Schulungen</h2>
+        <p>Werkzeuge und Simulationen für Siemens-Schulungsveranstaltungen.</p>
+        <span class="tag">Passwortgeschützt</span>
+      </a>
+      <a class="card hdt" href="hdt.html">
+        <div class="card-icon">🎓</div>
+        <h2>HdT Schulungen</h2>
+        <p>Werkzeuge und Simulationen für HdT-Seminare zur Regelungstechnik.</p>
+        <span class="tag">Passwortgeschützt</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Kontakt -->
+  <div class="section">
+    <div class="contact">
+      <h2>Kontakt</h2>
+      <p>
+        Prof. Dr.-Ing. Axel Graeser<br>
+        Posenerstr. 9 · 40670 Meerbusch<br>
+        Tel.: <a href="tel:+491777979036">+49 (0) 177-79 79 036</a><br>
+        E-Mail: <a href="mailto:agpgraeser@outlook.com">agpgraeser@outlook.com</a>
+      </p>
+    </div>
+  </div>
+
+  <footer>agpcontrol.com &nbsp;|&nbsp; Regelungstechnik Tools</footer>
+
+</body>
+</html>
