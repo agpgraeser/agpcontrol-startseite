@@ -1,0 +1,5 @@
+# Netlify-Build-Konfiguration – Startseite agpcontrol.com
+# Reine statische HTML-Seiten, kein Build. Deploy automatisch bei 'git push'.
+
+[build]
+  publish = "."   # Projektwurzel wird direkt veröffentlicht
