@@ -142,23 +142,6 @@
 
     <div class="grid">
 
-      <a class="card" href="https://ptkptn.agpcontrol.com/">
-        <div class="card-icon">📊</div>
-        <h2>PTkPTn – Berechnung</h2>
-        <p>Berechnung eines PTn-Modells aus der Sprungantwort.</p>
-      </a>
-
-      <a class="card" href="https://ptn-system-vergleich.netlify.app/">
-        <div class="card-icon">🔍</div>
-        <h2>PTn – Systemvergleich</h2>
-        <p>Vergleich mehrerer PTn-Modelle aus verschiedenen Identifikationsmethoden.</p>
-      </a>
-
-      <!-- Neuaufbau im Python/AGP-Stack (2026-08-17), Nachfolger der beiden
-           React-Apps oben. Beide Dienste laufen auf Render (Free-Plan:
-           schlafen nach ~15 min Inaktivität ein, erster Aufruf dauert dann
-           30–60 s). Repos: agpgraeser/PTn-ZPK und agpgraeser/PTn-Vergleich -->
-
       <a class="card" href="https://ptn-zpk.onrender.com/">
         <div class="card-icon">📊</div>
         <h2>PTn – Parameter (ZPK)</h2>
@@ -172,11 +155,21 @@
         <p>Vergleich mehrerer PTn-Modelle gegen eine Referenzmessung.</p>
       </a>
 
-      <a class="card" href="#">
-        <div class="card-icon">🔲</div>
-        <h2>Platzhalter</h2>
-        <p>Reserviert für eine zukünftige AGP_H-App.</p>
+      <a class="card" href="https://regelkreissimulationen.onrender.com/">
+        <div class="card-icon">🔄</div>
+        <h2>Regelkreis-Simulationen</h2>
+        <p>Simulation des geschlossenen Regelkreises mit Zustandsmodellen.</p>
       </a>
+
+      <!-- Reglerparameter, HdT-Vollversion (CHR/ZN + Latzel): dasselbe Repo wie
+           die AGP_S-Auskopplung, aber ohne PROFILE=agp_s. Der Render-Dienst ist
+           noch anzulegen; danach diese Karte einkommentieren und die URL prüfen.
+      <a class="card" href="https://reglerberechnung-hdt.onrender.com/">
+        <div class="card-icon">🎛️</div>
+        <h2>Reglerparameter – CHR/ZN &amp; Latzel</h2>
+        <p>Reglereinstellwerte nach CHR, Ziegler/Nichols und Latzel.</p>
+      </a>
+      -->
 
     </div>
 
