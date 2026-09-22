@@ -94,6 +94,30 @@
       transition: background 0.2s;
     }
     .btn-lock:hover { background: #f5f5f5; }
+    /* ── Stufen a → b → c ── */
+    .stufen { margin-bottom: 1.6rem; }
+    .stufen-titel {
+      font-size: 1rem; color: #1565c0; font-weight: 700;
+      margin-bottom: 0.7rem;
+      display: flex; align-items: baseline; gap: 0.5rem; flex-wrap: wrap;
+    }
+    .stufen-titel span { font-size: 0.8rem; color: #666; font-weight: 400; }
+    .card.stufe { position: relative; }
+    .stufe-status { margin-top: auto; padding-top: 0.5rem; font-size: 0.8rem; font-weight: 600; color: #1565c0; }
+    .card.gesperrt {
+      opacity: 0.55; cursor: not-allowed; pointer-events: none;
+      background: #f7f8fa; box-shadow: none;
+    }
+    .card.gesperrt h2 { color: #7a8595; }
+    .card.gesperrt .stufe-status { color: #8a8a8a; font-weight: 400; }
+    .card.erledigt .stufe-status { color: #2e7d32; }
+    .btn-reset {
+      background: none; border: 1px solid #ccc;
+      border-radius: 6px; padding: 0.3rem 0.8rem;
+      font-size: 0.8rem; cursor: pointer; color: #666;
+      transition: background 0.2s; margin-right: 0.5rem;
+    }
+    .btn-reset:hover { background: #f5f5f5; }
     .back-nav { margin-top: 2rem; text-align: center; font-size: 0.85rem; }
     .back-nav a { color: #1565c0; text-decoration: none; }
     footer { margin-top: 2rem; color: #aaa; font-size: 0.82rem; }
@@ -137,17 +161,45 @@
 
     <div class="toolbar">
       <span class="unlock-info" id="unlock-info"></span>
-      <button class="btn-lock" onclick="doLock()">🔒 Sitzung beenden</button>
+      <span>
+        <button class="btn-reset" onclick="stufenZuruecksetzen()">↺ Stufen zurücksetzen</button>
+        <button class="btn-lock" onclick="doLock()">🔒 Sitzung beenden</button>
+      </span>
     </div>
 
-    <div class="grid">
+    <section class="stufen">
+      <h2 class="stufen-titel">PTn – Parameter (ZPK)
+        <span>in drei Stufen – bitte der Reihe nach</span></h2>
 
-      <a class="card" href="https://ptn-zpk.onrender.com/">
-        <div class="card-icon">📊</div>
-        <h2>PTn – Parameter (ZPK)</h2>
-        <p>Bestimmung eines PTn-Modells aus der Sprungantwort nach der
-           Zeit-Prozent-Kennwert-Methode.</p>
-      </a>
+      <div class="grid">
+
+        <a class="card stufe" data-stufe="1" href="https://ptn-zpk.onrender.com/?modus=a">
+          <div class="card-icon">1️⃣</div>
+          <h2>Stufe a – alles selbst ermitteln</h2>
+          <p>Alle Werte selbst aus der Sprungantwort ablesen – auch Y10, Y50 und Y90.</p>
+          <div class="stufe-status"></div>
+        </a>
+
+        <a class="card stufe" data-stufe="2" href="https://ptn-zpk.onrender.com/?modus=b">
+          <div class="card-icon">2️⃣</div>
+          <h2>Stufe b – Y-Werte werden berechnet</h2>
+          <p>Y10, Y50 und Y90 rechnet das Programm; die Zeiten lesen Sie selbst ab.</p>
+          <div class="stufe-status"></div>
+        </a>
+
+        <a class="card stufe" data-stufe="3" href="https://ptn-zpk.onrender.com/?modus=c">
+          <div class="card-icon">3️⃣</div>
+          <h2>Stufe c – alles wird abgelesen</h2>
+          <p>Das Programm ermittelt alle Werte aus der Messung; Sie prüfen und ändern sie.</p>
+          <div class="stufe-status"></div>
+        </a>
+
+      </div>
+    </section>
+
+    <h2 class="stufen-titel">Die weiteren Programme</h2>
+
+    <div class="grid">
 
       <a class="card" href="https://ptn-vergleich.onrender.com/">
         <div class="card-icon">🔍</div>
@@ -188,11 +240,50 @@
       return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
     }
 
+    // ── Stufen a → b → c ─────────────────────────────────────────────
+    // Lenkung, kein Schutz: wer die Adresse mit ?modus=c kennt, kommt direkt hin.
+    // Gespeichert wird nur die höchste geöffnete Stufe, im Browser des Teilnehmers.
+    const STUFEN_KEY = 'agpcontrol_hdt_stufe';
+    const STUFEN_NAME = ['a', 'b', 'c'];
+
+    function stufeErreicht() {
+      return parseInt(localStorage.getItem(STUFEN_KEY) || '0');
+    }
+
+    function stufenAnwenden() {
+      const erreicht = stufeErreicht();
+      document.querySelectorAll('.card.stufe').forEach(el => {
+        const n = parseInt(el.dataset.stufe);
+        const frei = n <= erreicht + 1;
+        el.classList.toggle('gesperrt', !frei);
+        el.classList.toggle('erledigt', n <= erreicht);
+        el.querySelector('.stufe-status').textContent =
+          n <= erreicht ? '✓ geöffnet'
+          : frei        ? '▶ jetzt an der Reihe'
+                        : '🔒 frei nach Stufe ' + STUFEN_NAME[n - 2];
+      });
+    }
+
+    function stufenZuruecksetzen() {
+      localStorage.removeItem(STUFEN_KEY);
+      stufenAnwenden();
+    }
+
+    document.querySelectorAll('.card.stufe').forEach(el => {
+      el.addEventListener('click', e => {
+        if (el.classList.contains('gesperrt')) { e.preventDefault(); return; }
+        const n = parseInt(el.dataset.stufe);
+        if (n > stufeErreicht()) localStorage.setItem(STUFEN_KEY, String(n));
+        setTimeout(stufenAnwenden, 50);
+      });
+    });
+
     function showContent(expiryMs) {
       document.getElementById('login-overlay').style.display = 'none';
       document.getElementById('main-content').style.display = 'block';
       document.getElementById('footer').style.display = 'block';
       const remaining = Math.round((expiryMs - Date.now()) / 3600000 * 10) / 10;
+      stufenAnwenden();
       document.getElementById('unlock-info').textContent =
         `Entsperrt für ${remaining} h (bis ${new Date(expiryMs).toLocaleTimeString('de-DE', {hour:'2-digit', minute:'2-digit'})})`;
     }
