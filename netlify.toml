@@ -3,3 +3,9 @@
 
 [build]
   publish = "."   # Projektwurzel wird direkt veröffentlicht
+
+# Web-App-Manifest der HdT-Kursseite mit korrektem Typ ausliefern
+[[headers]]
+  for = "/*.webmanifest"
+  [headers.values]
+    Content-Type = "application/manifest+json"
