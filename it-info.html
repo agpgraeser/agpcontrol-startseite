@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AGP Control – Information für die IT-Abteilung</title>
+  <link rel="icon" type="image/png" href="/icons/favicon-64.png" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f0f2f5; color: #222; line-height: 1.5;
+      padding: 2rem 1rem;
+    }
+    main {
+      max-width: 860px; margin: 0 auto; background: #fff;
+      border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.09);
+      padding: 2rem 2.2rem;
+    }
+    h1 { font-size: 1.6rem; color: #1565c0; }
+    .unterzeile { color: #555; margin-top: 0.3rem; }
+    h2 { font-size: 1.15rem; color: #1565c0; margin: 1.8rem 0 0.6rem; }
+    p, li { font-size: 0.95rem; }
+    p + p { margin-top: 0.6rem; }
+    ul { padding-left: 1.3rem; }
+    li + li { margin-top: 0.25rem; }
+    .kasten {
+      background: #e8f1fb; border-left: 4px solid #1565c0;
+      padding: 0.9rem 1.1rem; border-radius: 4px; margin-top: 1rem;
+    }
+    table { width: 100%; border-collapse: collapse; margin-top: 0.5rem; font-size: 0.88rem; }
+    th, td { text-align: left; vertical-align: top; padding: 0.45rem 0.5rem; border-bottom: 1px solid #dde2e8; }
+    th { background: #f5f7fa; font-weight: 600; }
+    code { font-family: Consolas, monospace; font-size: 0.88em; background: #f2f4f7; padding: 0 0.25em; border-radius: 3px; }
+    .klein { font-size: 0.85rem; color: #555; }
+    footer { text-align: center; color: #888; font-size: 0.8rem; margin-top: 1.5rem; }
+    @media (max-width: 600px) {
+      main { padding: 1.3rem 1rem; }
+      table { font-size: 0.8rem; }
+      th, td { padding: 0.35rem 0.3rem; }
+    }
+    @media print {
+      body { background: #fff; padding: 0; }
+      main { box-shadow: none; padding: 0; max-width: none; }
+      footer { display: none; }
+    }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Information für die IT-Abteilung</h1>
+  <p class="unterzeile">Kursprogramme Regelungstechnik unter <strong>agpcontrol.com</strong> –
+    Seminare am Haus der Technik (HdT), Essen</p>
+
+  <div class="kasten">
+    <p><strong>Kurzfassung.</strong> Die Kursprogramme laufen im Webbrowser. Es wird
+      <strong>nichts installiert</strong>, es sind <strong>keine Administratorrechte</strong>
+      nötig, und es gibt <strong>kein Benutzerkonto und keine Anmeldung</strong>.
+      Die Programme setzen <strong>keine Cookies</strong>, enthalten <strong>kein Tracking</strong>
+      und <strong>keine Werbung</strong>. Alle Verbindungen laufen über <strong>HTTPS</strong>.
+      Eingaben und hochgeladene Dateien werden <strong>nicht gespeichert</strong>.</p>
+  </div>
+
+  <h2>1 Wozu die Programme dienen</h2>
+  <p>Im Seminar „Praxisorientierte Auslegung von Regelkreisen“ rechnen die Teilnehmenden
+    mit Lernprogrammen: Streckenmodelle aus Sprungantworten bestimmen, Regelkreise
+    simulieren, Reglerparameter berechnen, Messdaten ansehen. Die Programme ersetzen
+    frühere MATLAB/Simulink-Übungen, für die bisher Leihrechner nötig waren.</p>
+
+  <h2>2 Freizuschaltende Adressen</h2>
+  <p>Alle Programme liegen unter einer Domain. Es genügt, diese freizugeben:</p>
+  <ul>
+    <li><code>agpcontrol.com</code> und <code>*.agpcontrol.com</code> (nur HTTPS, Port 443)</li>
+  </ul>
+  <p>Zusätzlich lädt ein Teil der Programme derzeit die Diagrammbibliothek Plotly von
+    <code>cdn.plot.ly</code>. <span class="klein">(Wird in Kürze auf agpcontrol.com umgestellt.)</span></p>
+  <p>Einzeln sind es diese Adressen:</p>
+  <table>
+    <tr><th>Adresse</th><th>Programm</th></tr>
+    <tr><td><code>agpcontrol.com</code></td><td>Startseite mit Programmübersicht</td></tr>
+    <tr><td><code>ptn-zpk.agpcontrol.com</code></td><td>PTn-Modell aus Sprungantwort (Zeit-Prozent-Kennwerte)</td></tr>
+    <tr><td><code>ptn-vergleich.agpcontrol.com</code></td><td>Vergleich von PTn-Modellen mit Messdaten</td></tr>
+    <tr><td><code>zpk-identifikation.agpcontrol.com</code></td><td>Streckenmodell aus dem geschlossenen Regelkreis</td></tr>
+    <tr><td><code>regelkreissimulationen.agpcontrol.com</code></td><td>Regelkreissimulation</td></tr>
+    <tr><td><code>reglerparameter.agpcontrol.com</code><br><code>reglerparameter-s.agpcontrol.com</code></td><td>Reglerparameter-Berechnung</td></tr>
+    <tr><td><code>datenbetrachter.agpcontrol.com</code></td><td>Messdaten ansehen (CSV, Excel)</td></tr>
+    <tr><td><code>pt1tt-*.agpcontrol.com</code> (4 Adressen)</td><td>Auswertungen PT1-Totzeit-Modell</td></tr>
+  </table>
+
+  <h2>3 Welche Daten wohin gehen</h2>
+  <table>
+    <tr><th>Programm</th><th>Wo gerechnet wird</th><th>Was an den Server geht</th><th>Gespeichert?</th></tr>
+    <tr><td>Datenbetrachter, PT1TT-Programme</td>
+        <td>nur im Browser</td>
+        <td>nichts – geöffnete Dateien verlassen den Rechner nicht</td>
+        <td>nein</td></tr>
+    <tr><td>ZPK-Identifikation</td>
+        <td>Server in Frankfurt</td>
+        <td>eingegebene Zahlenwerte (Zeiten, Reglerparameter)</td>
+        <td>nein</td></tr>
+    <tr><td>PTn-ZPK, PTn-Vergleich, Regelkreissimulation, Reglerparameter</td>
+        <td>Server in Frankfurt</td>
+        <td>eingegebene Zahlenwerte; auf Wunsch eine Excel-Datei mit Messdaten oder Projektdaten</td>
+        <td>nein – die Datei wird nur für die Dauer der Berechnung im Arbeitsspeicher gehalten</td></tr>
+  </table>
+  <p class="klein" style="margin-top:0.6rem">Ergebnisse werden als Datei auf den eigenen Rechner
+    heruntergeladen, nicht auf dem Server abgelegt. Einige Programme merken sich Bedieneinstellungen
+    im Speicher des Browsers (localStorage); diese Daten bleiben auf dem Rechner.
+    Wie bei jedem Webserver protokollieren die Hosting-Anbieter technische Zugriffsdaten
+    (IP-Adresse, Zeitpunkt, aufgerufene Adresse), nicht aber den Inhalt hochgeladener Dateien.</p>
+
+  <div class="kasten">
+    <p><strong>Empfehlung für den Kurs:</strong> Für die Übungen genügen die mitgelieferten
+      Beispieldaten. Vertrauliche Messdaten des eigenen Unternehmens müssen nicht hochgeladen werden.</p>
+  </div>
+
+  <h2>4 Betrieb</h2>
+  <ul>
+    <li><strong>Statische Seiten</strong> (Startseite, Datenbetrachter, PT1TT): Netlify Inc., USA,
+      ausgeliefert über deren weltweites Netz.</li>
+    <li><strong>Rechenprogramme</strong>: Render Services Inc., USA, Server in Frankfurt am Main;
+      vorgeschaltet ist Cloudflare.</li>
+    <li><strong>Verschlüsselung</strong>: TLS-Zertifikate von Let’s Encrypt bzw. Google Trust Services,
+      automatisch erneuert. Unverschlüsselte Aufrufe (<code>http://</code>) werden auf HTTPS umgeleitet.</li>
+    <li><strong>Technik</strong>: HTML/JavaScript im Browser; Rechenprogramme in Python (FastAPI).
+      Keine Plug-ins, kein Java, kein Flash, keine Browser-Erweiterungen.</li>
+  </ul>
+
+  <h2>5 Kontakt</h2>
+  <p>Prof. Dr.-Ing. Axel Graeser, Dozent HdT<br>
+     Posener Straße 9, 40670 Meerbusch<br>
+     Tel.: <a href="tel:+491777979036">+49 (0) 177-79 79 036</a><br>
+     E-Mail: <a href="mailto:agpgraeser@outlook.com">agpgraeser@outlook.com</a></p>
+  <p class="klein">Stand: Oktober 2026</p>
+</main>
+<footer>agpcontrol.com &nbsp;|&nbsp; Information für die IT-Abteilung</footer>
+</body>
+</html>
