@@ -1,0 +1,227 @@
+/* ---------------------------------------------------------------
+   seite.css – Layout von agpcontrol.com
+   Setzt auf agp-design-system.css auf: Farben, Radien, Schatten und
+   Schriften kommen von dort. Hier steht nur, wie die Seite gebaut ist.
+   Eine Datei fuer alle Seiten – wer hier etwas aendert, aendert es
+   ueberall.
+   --------------------------------------------------------------- */
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--agp-bg);
+  color: var(--agp-ink);
+  font-family: var(--agp-font);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Gemeinsame Spaltenbreite: nie breiter als 1100px, immer 20px Luft */
+.wrap { width: min(1100px, 100% - 2.5rem); margin-inline: auto; }
+
+a { color: var(--agp-brand); }
+
+/* Sprungmarke fuer Tastaturnutzer – nur sichtbar, wenn fokussiert */
+.skip {
+  position: absolute; left: -999px;
+  background: var(--agp-brand); color: #fff;
+  padding: .6rem 1rem; border-radius: var(--agp-r-md); z-index: 100;
+}
+.skip:focus { left: 1rem; top: 1rem; }
+
+/* ---------- Kopfleiste ---------- */
+
+.topbar {
+  position: sticky; top: 0; z-index: 50;
+  background: color-mix(in srgb, var(--agp-surface) 88%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--agp-border);
+}
+.topbar .wrap {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1rem; min-height: 64px;
+}
+.marke {
+  display: inline-flex; align-items: baseline; gap: .45rem;
+  font-size: 1.15rem; font-weight: 700; letter-spacing: .01em;
+  color: var(--agp-ink); text-decoration: none;
+}
+.marke b { color: var(--agp-brand); }
+
+.hauptnav { display: flex; align-items: center; gap: .35rem; flex-wrap: wrap; }
+.hauptnav a {
+  padding: .45rem .7rem; border-radius: var(--agp-r-sm);
+  color: var(--agp-ink-muted); text-decoration: none;
+  font-size: var(--agp-fs-sm, .88rem); font-weight: 600;
+}
+.hauptnav a:hover { color: var(--agp-brand); background: var(--agp-brand-tint); }
+
+/* ---------- Schaltflaechen ---------- */
+
+.btn {
+  display: inline-flex; align-items: center; gap: .5rem;
+  padding: .7rem 1.25rem; border-radius: var(--agp-r-md);
+  font-weight: 650; font-size: .95rem; text-decoration: none;
+  border: 1px solid transparent; cursor: pointer;
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn:focus-visible { outline: none; box-shadow: var(--agp-ring); }
+.btn-voll { background: var(--agp-brand); color: #fff; box-shadow: var(--agp-shadow-1); }
+.btn-voll:hover { background: var(--agp-brand-strong); }
+.btn-rand {
+  background: var(--agp-surface); color: var(--agp-brand);
+  border-color: var(--agp-border-strong);
+}
+.btn-rand:hover { border-color: var(--agp-brand); }
+.hauptnav .btn { padding: .45rem .9rem; font-size: .88rem; }
+
+/* ---------- Aufmacher ---------- */
+
+.hero { padding: clamp(2.5rem, 7vw, 5rem) 0 clamp(2rem, 5vw, 3.5rem); }
+.hero .wrap {
+  display: grid; grid-template-columns: 1.05fr .95fr;
+  gap: clamp(1.5rem, 4vw, 3rem); align-items: center;
+}
+.hero h1 {
+  margin: 0 0 1rem;
+  font-size: clamp(1.9rem, 4.2vw, 3rem); line-height: 1.15;
+  letter-spacing: -0.02em; color: var(--agp-brand-deep);
+}
+.hero .vorspann {
+  margin: 0 0 1.75rem; max-width: 46ch;
+  font-size: clamp(1rem, 1.6vw, 1.12rem); color: var(--agp-ink-muted);
+}
+.hero-knoepfe { display: flex; gap: .75rem; flex-wrap: wrap; }
+
+.hero-bild {
+  background: var(--agp-surface); border: 1px solid var(--agp-border);
+  border-radius: var(--agp-r-lg); box-shadow: var(--agp-shadow-2);
+  padding: 1.25rem;
+}
+.hero-bild svg { display: block; width: 100%; height: auto; }
+.hero-bild figcaption {
+  margin-top: .6rem; font-size: .78rem; color: var(--agp-ink-faint); text-align: center;
+}
+
+/* ---------- Abschnitte ---------- */
+
+.block { padding: clamp(2.5rem, 6vw, 4rem) 0; }
+.block-hell { background: var(--agp-surface); border-block: 1px solid var(--agp-border); }
+
+.block-kopf { max-width: 60ch; margin-bottom: 2rem; }
+.block-kopf .auge {
+  display: block; margin-bottom: .4rem;
+  font-size: .76rem; font-weight: 700; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--agp-accent);
+}
+.block-kopf h2 {
+  margin: 0 0 .5rem; font-size: clamp(1.4rem, 2.6vw, 1.9rem);
+  letter-spacing: -0.01em; color: var(--agp-brand-deep);
+}
+.block-kopf p { margin: 0; color: var(--agp-ink-muted); }
+
+/* ---------- Karten ---------- */
+
+.raster { display: grid; gap: 1.25rem; }
+.raster-3 { grid-template-columns: repeat(3, 1fr); }
+.raster-2 { grid-template-columns: repeat(2, 1fr); }
+
+.karte {
+  display: flex; flex-direction: column;
+  background: var(--agp-surface); border: 1px solid var(--agp-border);
+  border-radius: var(--agp-r-lg); padding: 1.5rem;
+  text-decoration: none; color: inherit;
+  box-shadow: var(--agp-shadow-1);
+  transition: transform .14s ease, box-shadow .14s ease, border-color .14s ease;
+}
+.block-hell .karte { background: var(--agp-surface-2); }
+a.karte:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--agp-shadow-2); border-color: var(--agp-brand);
+}
+.karte h3 { margin: 0 0 .5rem; font-size: 1.1rem; color: var(--agp-brand-deep); }
+.karte p  { margin: 0; font-size: .92rem; color: var(--agp-ink-muted); }
+.karte .marker {
+  width: 38px; height: 38px; margin-bottom: .9rem;
+  display: grid; place-items: center; border-radius: var(--agp-r-md);
+  background: var(--agp-brand-tint); color: var(--agp-brand);
+}
+.karte .marker svg { width: 21px; height: 21px; }
+.karte .pfeil {
+  margin-top: auto; padding-top: 1rem;
+  font-size: .88rem; font-weight: 650; color: var(--agp-brand);
+}
+
+/* Werkzeugliste: schmaler als die Seminarkarten */
+.werkzeug { padding: 1.1rem 1.25rem; }
+.werkzeug h3 { font-size: 1rem; margin-bottom: .25rem; }
+.werkzeug p  { font-size: .86rem; }
+
+/* ---------- Profil ---------- */
+
+.profil { display: grid; grid-template-columns: 220px 1fr; gap: 2rem; align-items: start; }
+.profil-bild {
+  aspect-ratio: 1; border-radius: var(--agp-r-lg);
+  background: var(--agp-brand-tint); border: 1px dashed var(--agp-border-strong);
+  display: grid; place-items: center; text-align: center;
+  color: var(--agp-ink-faint); font-size: .8rem; padding: 1rem;
+}
+.profil p { margin: 0 0 .9rem; max-width: 62ch; }
+
+/* ---------- Kontakt ---------- */
+
+.kontakt-karte {
+  background: var(--agp-surface); border: 1px solid var(--agp-border);
+  border-radius: var(--agp-r-lg); box-shadow: var(--agp-shadow-1);
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: center;
+}
+.kontakt-karte dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: .35rem 1rem; }
+.kontakt-karte dt { color: var(--agp-ink-faint); font-size: .85rem; }
+.kontakt-karte dd { margin: 0; font-size: .95rem; }
+
+/* ---------- Fuss ---------- */
+
+.fuss {
+  padding: 2rem 0 2.5rem; margin-top: 1rem;
+  border-top: 1px solid var(--agp-border);
+  color: var(--agp-ink-faint); font-size: .84rem;
+}
+.fuss .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.fuss a { color: var(--agp-ink-muted); text-decoration: none; margin-right: 1rem; }
+.fuss a:hover { color: var(--agp-brand); text-decoration: underline; }
+
+/* ---------- Schmale Bildschirme ---------- */
+
+@media (max-width: 860px) {
+  .hero .wrap { grid-template-columns: 1fr; }
+  .raster-3, .raster-2 { grid-template-columns: 1fr; }
+  .profil { grid-template-columns: 1fr; }
+  .profil-bild { max-width: 180px; }
+  .kontakt-karte { grid-template-columns: 1fr; }
+  .kontakt-karte .btn { justify-self: start; }
+}
+
+/* Unter 640px passt die Leiste nicht mehr in eine Zeile: Marke oben,
+   Navigation als eigene Zeile darunter – statt eines Umbruchs quer
+   durch die Mitte. */
+@media (max-width: 640px) {
+  .topbar .wrap { flex-wrap: wrap; min-height: 0; padding-block: .5rem 0; }
+  .hauptnav {
+    order: 2; width: 100%;
+    justify-content: space-between; gap: .25rem;
+    margin-top: .5rem; padding: .35rem 0 .5rem;
+    border-top: 1px solid var(--agp-border);
+  }
+  .hauptnav a { padding: .35rem .45rem; font-size: .82rem; }
+  .hauptnav .btn { padding: .35rem .8rem; }
+}
+
+/* Wer Bewegung abgestellt hat, bekommt keine */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .btn, .karte { transition: none; }
+  .btn:hover, a.karte:hover { transform: none; }
+}
