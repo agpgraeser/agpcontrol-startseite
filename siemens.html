@@ -4,209 +4,101 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AGP Control – AGP_S Schulungen</title>
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: 'Segoe UI', Arial, sans-serif;
-      background: #f0f2f5;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 2rem 1rem;
-    }
-
-    /* ── Hauptinhalt ── */
-    #main-content { width: 100%; max-width: 860px; }
-    header { text-align: center; margin-bottom: 2rem; }
-    header h1 { font-size: 2rem; color: #009999; font-weight: 700; }
-    header p  { margin-top: 0.4rem; color: #555; font-size: 0.95rem; }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.2rem;
-    }
-    .card {
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.09);
-      padding: 1.8rem 1.5rem;
-      text-decoration: none; color: inherit;
-      transition: box-shadow 0.2s, transform 0.2s;
-      display: flex; flex-direction: column; gap: 0.6rem;
-    }
-    .card:hover { box-shadow: 0 6px 20px rgba(0,153,153,0.2); transform: translateY(-3px); }
-    .card-icon { font-size: 1.8rem; }
-    .card h2   { font-size: 1rem; font-weight: 700; color: #009999; }
-    .card p    { font-size: 0.85rem; color: #666; line-height: 1.5; }
-
-    .toolbar {
-      display: flex; justify-content: space-between; align-items: center;
-      margin-bottom: 1.5rem;
-    }
-    /* ── Stufen a → b → c (wie hdt.html) ── */
-    .stufen { margin-bottom: 1.6rem; }
-    .stufen-titel {
-      font-size: 1rem; color: #009999; font-weight: 700;
-      margin-bottom: 0.7rem;
-      display: flex; align-items: baseline; gap: 0.5rem; flex-wrap: wrap;
-    }
-    .stufen-titel span { font-size: 0.8rem; color: #666; font-weight: 400; }
-    .card.stufe { position: relative; }
-    .stufe-status { margin-top: auto; padding-top: 0.5rem; font-size: 0.8rem; font-weight: 600; color: #009999; }
-    .card.gesperrt {
-      opacity: 0.55; cursor: not-allowed; pointer-events: none;
-      background: #f7f8fa; box-shadow: none;
-    }
-    .card.gesperrt h2 { color: #7a8595; }
-    .card.gesperrt .stufe-status { color: #8a8a8a; font-weight: 400; }
-    .card.erledigt .stufe-status { color: #2e7d32; }
-    .btn-reset {
-      background: none; border: 1px solid #ccc;
-      border-radius: 6px; padding: 0.3rem 0.8rem;
-      font-size: 0.8rem; cursor: pointer; color: #666;
-      transition: background 0.2s; margin-right: 0.5rem;
-    }
-    .btn-reset:hover { background: #f5f5f5; }
-    .back-nav { margin-top: 2rem; text-align: center; font-size: 0.85rem; }
-    .back-nav a { color: #009999; text-decoration: none; }
-    footer { margin-top: 2rem; color: #aaa; font-size: 0.82rem; }
-  </style>
+  <link rel="stylesheet" href="stil/agp-design-system.css" />
+  <link rel="stylesheet" href="stil/seite.css" />
+  <script src="stil/navigation.js" defer></script>
+  <script src="stil/stufen.js" defer></script>
 </head>
-<body>
+<body class="ohne-js">
 
-  <!-- ══ Hauptinhalt ══ -->
-  <div id="main-content">
-    <header>
-      <h1>AGP_S Schulungen</h1>
-      <p>Interaktive Werkzeuge für Regelungstechnik-Schulungen</p>
-    </header>
+<a class="skip" href="#inhalt">Zum Inhalt springen</a>
 
-    <div class="toolbar">
-      <span>
-        <button class="btn-reset" onclick="stufenZuruecksetzen()">↺ Stufen zurücksetzen</button>
-      </span>
-    </div>
+<header class="kopf">
+  <div class="wrap">
+    <a class="marke" href="index.html"><b>AGP</b> Control</a>
+    <span class="unterzeile">Regelungstechnik in der Praxis</span>
+  </div>
+</header>
+
+<div class="rahmen">
+
+  <nav id="seitennav" class="seitennav" aria-label="Hauptnavigation">
+    <a href="index.html">Startseite</a>
+  </nav>
+
+  <main id="inhalt" class="inhalt">
+    <h1>AGP_S Schulungen</h1>
+    <p class="vorspann">Interaktive Werkzeuge für Regelungstechnik-Schulungen</p>
 
     <!-- 3-Punkt-Methode in drei Stufen (seit 27.10.2026, wie ZPK auf hdt.html).
          Noch ohne Subdomain, deshalb die Render-Adresse. -->
-    <section class="stufen">
-      <h2 class="stufen-titel">PT1TT – 3-Punkt-Methode
+    <section data-stufen-key="agpcontrol_siemens_stufe">
+      <h2 class="zwischentitel">PT1TT – 3-Punkt-Methode
         <span>in drei Stufen – bitte der Reihe nach</span></h2>
 
-      <div class="grid">
-
-        <a class="card stufe" data-stufe="1" href="https://webapp-pt1tt-3punkt.onrender.com/?modus=a">
-          <div class="card-icon">1️⃣</div>
-          <h2>Stufe a – alles selbst ermitteln</h2>
+      <div class="raster raster-auto">
+        <a class="karte stufe" data-stufe="1" href="https://webapp-pt1tt-3punkt.onrender.com/?modus=a">
+          <div class="symbol" aria-hidden="true">1️⃣</div>
+          <h3>Stufe a – alles selbst ermitteln</h3>
           <p>Alle Werte selbst aus der Sprungantwort ablesen – auch X10, X50 und X90.</p>
-          <div class="stufe-status"></div>
+          <span class="stufe-status"></span>
         </a>
-
-        <a class="card stufe" data-stufe="2" href="https://webapp-pt1tt-3punkt.onrender.com/?modus=b">
-          <div class="card-icon">2️⃣</div>
-          <h2>Stufe b – X-Werte werden berechnet</h2>
+        <a class="karte stufe" data-stufe="2" href="https://webapp-pt1tt-3punkt.onrender.com/?modus=b">
+          <div class="symbol" aria-hidden="true">2️⃣</div>
+          <h3>Stufe b – X-Werte werden berechnet</h3>
           <p>X10, X50 und X90 rechnet das Programm; die Zeiten lesen Sie selbst ab.</p>
-          <div class="stufe-status"></div>
+          <span class="stufe-status"></span>
         </a>
-
-        <a class="card stufe" data-stufe="3" href="https://webapp-pt1tt-3punkt.onrender.com/?modus=c">
-          <div class="card-icon">3️⃣</div>
-          <h2>Stufe c – alles wird abgelesen</h2>
+        <a class="karte stufe" data-stufe="3" href="https://webapp-pt1tt-3punkt.onrender.com/?modus=c">
+          <div class="symbol" aria-hidden="true">3️⃣</div>
+          <h3>Stufe c – alles wird abgelesen</h3>
           <p>Das Programm ermittelt alle Werte aus der Messung; Sie prüfen und ändern sie.</p>
-          <div class="stufe-status"></div>
+          <span class="stufe-status"></span>
         </a>
-
       </div>
+      <p style="margin-top:.9rem"><button type="button" class="btn-klein" data-stufen-reset>↺ Stufen zurücksetzen</button></p>
     </section>
 
-    <h2 class="stufen-titel">Die weiteren Programme</h2>
-
-    <div class="grid">
-
-      <!-- Python-Neufassung der Wendetangente, seit 20.10.2026 die Hauptkarte.
-           Noch ohne Subdomain, deshalb die Render-Adresse. -->
-      <a class="card" href="https://webapp-pt1tt-wendetangente.onrender.com/">
-        <div class="card-icon">📐</div>
-        <h2>PT1TT – Wendetangente</h2>
+    <h2 class="zwischentitel">Die weiteren Programme</h2>
+    <!-- Python-Neufassungen (seit 20.10.2026). Noch ohne Subdomain,
+         deshalb die Render-Adressen. -->
+    <div class="raster raster-auto">
+      <a class="karte" href="https://webapp-pt1tt-wendetangente.onrender.com/">
+        <div class="symbol" aria-hidden="true">📐</div>
+        <h3>PT1TT – Wendetangente</h3>
         <p>Berechnung der PT1TT-Parameter mit der Wendetangentenmethode
            (Küpfmüller und modifiziert), mit druckfertiger Ergebnisdokumentation.</p>
       </a>
-
-      <!-- Python-Neufassung der Tangenten-App, seit 20.10.2026 die Hauptkarte.
-           Noch ohne Subdomain, deshalb die Render-Adresse. -->
-      <a class="card" href="https://webapp-pt1tt-tangente.onrender.com/">
-        <div class="card-icon">📈</div>
-        <h2>PT1TT – Tangente (Einspeicher)</h2>
+      <a class="karte" href="https://webapp-pt1tt-tangente.onrender.com/">
+        <div class="symbol" aria-hidden="true">📈</div>
+        <h3>PT1TT – Tangente (Einspeicher)</h3>
         <p>Berechnung der PT1TT-Parameter eines Einspeichersystems mit der
            Tangentenmethode, mit druckfertiger Ergebnisdokumentation.</p>
       </a>
-
-      <!-- Python-Neufassung des Vergleichs, seit 20.10.2026 die Hauptkarte.
-           Noch ohne Subdomain, deshalb die Render-Adresse. -->
-      <a class="card" href="https://webapp-pt1tt-vergleich.onrender.com/">
-        <div class="card-icon">🔍</div>
-        <h2>PT1TT – Vergleich</h2>
+      <a class="karte" href="https://webapp-pt1tt-vergleich.onrender.com/">
+        <div class="symbol" aria-hidden="true">🔍</div>
+        <h3>PT1TT – Vergleich</h3>
         <p>Vergleich mehrerer PT1TT-Modelle aus verschiedenen Identifikationsmethoden –
            übernimmt die Modelle direkt aus der AGP-Projektdatei.</p>
       </a>
-
-      <a class="card" href="https://reglerparameter-s.agpcontrol.com/">
-        <div class="card-icon">🎛️</div>
-        <h2>Reglerparameter – CHR / ZN</h2>
+      <a class="karte" href="https://reglerparameter-s.agpcontrol.com/">
+        <div class="symbol" aria-hidden="true">🎛️</div>
+        <h3>Reglerparameter – CHR / ZN</h3>
         <p>Reglerparameter nach Chien-Hrones-Reswick und Ziegler-Nichols aus PT1Tt-Streckenkennwerten.</p>
       </a>
-
     </div>
+  </main>
+</div>
 
-    <div class="back-nav"><a href="index.html">← Zurück zur Startseite</a></div>
+<footer class="fuss">
+  <div class="wrap" style="width:min(1240px, 100% - 2.5rem)">
+    <span>© 2026 AGP Control · Prof. Dr.-Ing. Axel Graeser</span>
+    <span>
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+    </span>
   </div>
-
-  <footer id="footer">agpcontrol.com &nbsp;|&nbsp; AGP_S Schulungen</footer>
-
-  <script>
-    // ── Stufen a → b → c (Ablauf wie hdt.html) ───────────────────────
-    // Lenkung, kein Schutz: wer die Adresse mit ?modus=c kennt, kommt direkt hin.
-    // Gespeichert wird nur die höchste geöffnete Stufe, im Browser des Teilnehmers;
-    // eigener Schlüssel, damit sich AGP_H und AGP_S nicht gegenseitig freischalten.
-    const STUFEN_KEY = 'agpcontrol_siemens_stufe';
-    const STUFEN_NAME = ['a', 'b', 'c'];
-
-    function stufeErreicht() {
-      return parseInt(localStorage.getItem(STUFEN_KEY) || '0');
-    }
-
-    function stufenAnwenden() {
-      const erreicht = stufeErreicht();
-      document.querySelectorAll('.card.stufe').forEach(el => {
-        const n = parseInt(el.dataset.stufe);
-        const frei = n <= erreicht + 1;
-        el.classList.toggle('gesperrt', !frei);
-        el.classList.toggle('erledigt', n <= erreicht);
-        el.querySelector('.stufe-status').textContent =
-          n <= erreicht ? '✓ geöffnet'
-          : frei        ? '▶ jetzt an der Reihe'
-                        : '🔒 frei nach Stufe ' + STUFEN_NAME[n - 2];
-      });
-    }
-
-    function stufenZuruecksetzen() {
-      localStorage.removeItem(STUFEN_KEY);
-      stufenAnwenden();
-    }
-
-    document.querySelectorAll('.card.stufe').forEach(el => {
-      el.addEventListener('click', e => {
-        if (el.classList.contains('gesperrt')) { e.preventDefault(); return; }
-        const n = parseInt(el.dataset.stufe);
-        if (n > stufeErreicht()) localStorage.setItem(STUFEN_KEY, String(n));
-        setTimeout(stufenAnwenden, 50);
-      });
-    });
-
-    stufenAnwenden();
-  </script>
+</footer>
 
 </body>
 </html>

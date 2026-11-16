@@ -293,6 +293,55 @@ a.karte:hover {
   .textseite td:first-child { font-weight: 650; }
 }
 
+.textseite code, .inhalt code {
+  font-family: var(--agp-mono); font-size: .88em;
+  background: var(--agp-surface-2, var(--agp-brand-tint)); padding: 0 .25em; border-radius: 3px;
+}
+.klein { font-size: .85rem; color: var(--agp-ink-muted); }
+
+/* Hervorgehobener Kasten (Kurzfassung, Hinweis) */
+.kasten {
+  background: var(--agp-brand-tint); border-left: 4px solid var(--agp-brand);
+  border-radius: 0 var(--agp-r-md) var(--agp-r-md) 0;
+  padding: .9rem 1.1rem; margin: 1rem 0;
+}
+.kasten p:last-child { margin-bottom: 0; }
+
+/* ---------- Werkzeugseiten (AGP_H, AGP_S, Vibe Coding) ---------- */
+
+.raster-auto { grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); }
+.karte .symbol { font-size: 1.6rem; line-height: 1; margin-bottom: .6rem; }
+.inhalt .zwischentitel {
+  margin: 2rem 0 .8rem; font-size: 1.05rem; color: var(--agp-brand-deep);
+  display: flex; align-items: baseline; gap: .5rem; flex-wrap: wrap;
+}
+.inhalt .zwischentitel span { font-size: .82rem; color: var(--agp-ink-muted); font-weight: 400; }
+
+/* Stufen a → b → c (Logik in stil/stufen.js) */
+.stufe-status { margin-top: auto; padding-top: .75rem; font-size: .82rem; font-weight: 650; color: var(--agp-brand); }
+.karte.gesperrt {
+  opacity: .55; cursor: not-allowed; pointer-events: none; box-shadow: none;
+}
+.karte.gesperrt h3 { color: var(--agp-ink-faint); }
+.karte.gesperrt .stufe-status { color: var(--agp-ink-faint); font-weight: 400; }
+.karte.erledigt .stufe-status { color: var(--agp-ok); }
+.btn-klein {
+  background: none; border: 1px solid var(--agp-border-strong); border-radius: var(--agp-r-sm);
+  padding: .3rem .8rem; font: inherit; font-size: .82rem; color: var(--agp-ink-muted); cursor: pointer;
+}
+.btn-klein:hover { border-color: var(--agp-brand); color: var(--agp-brand); }
+
+/* Kursbeschreibung */
+.inhalt ol.inhaltsliste { padding-left: 1.3rem; max-width: 72ch; }
+.inhalt ol.inhaltsliste li { margin-bottom: .45rem; }
+
+/* Drucken: nur der Inhalt */
+@media print {
+  .kopf, .seitennav, .fuss, .skip { display: none !important; }
+  .rahmen { display: block; width: auto; }
+  body { background: #fff; }
+}
+
 /* Sichtbar markierte Luecke – vor dem Veroeffentlichen fuellen */
 .offen {
   background: var(--agp-warn-bg); color: var(--agp-warn);
