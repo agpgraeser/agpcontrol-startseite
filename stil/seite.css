@@ -270,11 +270,11 @@ a.karte:hover {
 }
 .meldungen ol { list-style: none; margin: 0; padding: 0; }
 .meldungen li {
-  display: grid; grid-template-columns: 6.5rem 1fr; gap: .75rem;
+  display: grid; grid-template-columns: 8.5rem 1fr; gap: .75rem;
   padding: .55rem 0; border-top: 1px solid var(--agp-border); font-size: .92rem;
 }
 .meldungen li:first-child { border-top: 0; padding-top: 0; }
-.meldungen time { color: var(--agp-accent); font-weight: 650; font-variant-numeric: tabular-nums; }
+.meldungen time { color: var(--agp-accent); font-weight: 650; font-variant-numeric: tabular-nums; white-space: nowrap; }
 
 .platzhalter { color: var(--agp-ink-faint); font-size: .85rem; }
 
