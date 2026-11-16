@@ -135,6 +135,9 @@ a.karte:hover {
   color: var(--agp-ink-faint); font-size: .8rem; padding: 1rem;
 }
 .profil p { margin: 0 0 .9rem; max-width: 62ch; }
+.profil-liste { margin: 0 0 1rem; padding-left: 1.2rem; max-width: 66ch; }
+.profil-liste li { margin-bottom: .35rem; }
+.profil-liste li::marker { color: var(--agp-accent); }
 .profil-foto {
   display: block; width: 100%; height: auto;
   border-radius: var(--agp-r-lg); border: 1px solid var(--agp-border);
