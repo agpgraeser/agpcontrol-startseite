@@ -135,6 +135,11 @@ a.karte:hover {
   color: var(--agp-ink-faint); font-size: .8rem; padding: 1rem;
 }
 .profil p { margin: 0 0 .9rem; max-width: 62ch; }
+.profil-foto {
+  display: block; width: 100%; height: auto;
+  border-radius: var(--agp-r-lg); border: 1px solid var(--agp-border);
+  box-shadow: var(--agp-shadow-1);
+}
 
 /* ---------- Kontakt ---------- */
 
@@ -164,7 +169,7 @@ a.karte:hover {
 @media (max-width: 860px) {
   .raster-3, .raster-2 { grid-template-columns: 1fr; }
   .profil { grid-template-columns: 1fr; }
-  .profil-bild { max-width: 180px; }
+  .profil-bild, .profil-foto { max-width: 180px; }
   .kontakt-karte { grid-template-columns: 1fr; }
   .kontakt-karte .btn { justify-self: start; }
 }
