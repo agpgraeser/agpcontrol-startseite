@@ -219,6 +219,137 @@ a.karte:hover {
   .hauptnav .btn { padding: .35rem .8rem; }
 }
 
+/* ===============================================================
+   Layout mit linker Navigationsleiste (Entwurf index-nav.html)
+   Die Leiste selbst fuellt stil/navigation.js.
+   =============================================================== */
+
+.kopf {
+  position: sticky; top: 0; z-index: 50;
+  background: color-mix(in srgb, var(--agp-surface) 92%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--agp-border);
+}
+.kopf .wrap {
+  width: min(1240px, 100% - 2.5rem);
+  display: flex; align-items: center; gap: 1rem; min-height: 60px;
+}
+.kopf .unterzeile {
+  font-size: .85rem; color: var(--agp-ink-faint);
+  padding-left: 1rem; border-left: 1px solid var(--agp-border);
+}
+
+.rahmen {
+  width: min(1240px, 100% - 2.5rem); margin-inline: auto;
+  display: grid; grid-template-columns: 230px minmax(0, 1fr);
+  gap: clamp(1.5rem, 3vw, 3rem);
+}
+
+/* ---------- Leiste ---------- */
+
+.seitennav {
+  position: sticky; top: 60px; align-self: start;
+  max-height: calc(100vh - 60px); overflow-y: auto;
+  padding: 1.75rem 0 2rem;
+  font-size: .9rem;
+  scrollbar-width: thin;
+}
+.seitennav ul { list-style: none; margin: 0 0 1.25rem; padding: 0; border-left: 1px solid var(--agp-border); }
+.nav-rubrik {
+  margin: 0 0 .35rem;
+  font-size: .74rem; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--agp-brand-deep);
+}
+.seitennav a, .nav-bald {
+  display: block; padding: .28rem .8rem; margin-left: -1px;
+  border-left: 2px solid transparent;
+  color: var(--agp-ink-muted); text-decoration: none; line-height: 1.4;
+}
+.seitennav a:hover { color: var(--agp-brand); background: var(--agp-brand-tint); }
+.seitennav a:focus-visible { outline: none; box-shadow: var(--agp-ring); }
+.seitennav a[aria-current="page"] {
+  color: var(--agp-brand); font-weight: 650; border-left-color: var(--agp-brand);
+}
+.nav-extern { color: var(--agp-ink-faint); font-size: .8em; }
+.nav-bald { color: var(--agp-ink-faint); cursor: default; }
+.nav-bald::after { content: " · bald"; font-size: .78em; }
+
+.menue-knopf {
+  display: none; margin-left: auto;
+  align-items: center; gap: .4rem;
+  padding: .45rem .8rem; border-radius: var(--agp-r-md);
+  border: 1px solid var(--agp-border-strong); background: var(--agp-surface);
+  color: var(--agp-ink); font: inherit; font-size: .88rem; font-weight: 600;
+  cursor: pointer;
+}
+.menue-knopf:focus-visible { outline: none; box-shadow: var(--agp-ring); }
+.nav-offen .menue-knopf { border-color: var(--agp-brand); color: var(--agp-brand); }
+
+/* ---------- Inhaltsspalte ---------- */
+
+.inhalt { padding: 2rem 0 1rem; }
+.inhalt > section { padding: 2rem 0; border-top: 1px solid var(--agp-border); }
+.inhalt > section:first-child { padding-top: 0; border-top: 0; }
+.inhalt > section[id] { scroll-margin-top: 64px; }   /* Sprungziel nicht unter der Kopfleiste */
+.inhalt h1 {
+  margin: 0 0 .75rem;
+  font-size: clamp(1.6rem, 3.2vw, 2.3rem); line-height: 1.2;
+  letter-spacing: -0.015em; color: var(--agp-brand-deep);
+}
+.inhalt .vorspann { margin: 0 0 1.5rem; max-width: 62ch; font-size: 1.05rem; color: var(--agp-ink-muted); }
+.inhalt h2 { margin: 0 0 .75rem; font-size: 1.3rem; color: var(--agp-brand-deep); }
+.inhalt .hero-bild { max-width: 620px; margin: 0 0 1.75rem; }
+
+.kompetenzen { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin: 0; }
+.kompetenzen dt { font-weight: 700; color: var(--agp-accent); margin-bottom: .3rem; font-size: .95rem; }
+.kompetenzen dd { margin: 0; font-size: .9rem; color: var(--agp-ink-muted); }
+.kompetenzen ul { margin: 0; padding-left: 1.1rem; }
+
+/* Nachrichtenkasten – wie bei der Vorlage gestrichelt umrandet */
+.meldungen {
+  border: 1.5px dashed var(--agp-border-strong); border-radius: var(--agp-r-lg);
+  background: var(--agp-surface); padding: 1.25rem 1.5rem;
+}
+.meldungen ol { list-style: none; margin: 0; padding: 0; }
+.meldungen li {
+  display: grid; grid-template-columns: 6.5rem 1fr; gap: .75rem;
+  padding: .55rem 0; border-top: 1px solid var(--agp-border); font-size: .92rem;
+}
+.meldungen li:first-child { border-top: 0; padding-top: 0; }
+.meldungen time { color: var(--agp-accent); font-weight: 650; font-variant-numeric: tabular-nums; }
+
+.platzhalter { color: var(--agp-ink-faint); font-size: .85rem; }
+
+/* ---------- schmal: Leiste wird zum Klappmenue ---------- */
+
+@media (max-width: 900px) {
+  .rahmen { grid-template-columns: 1fr; }
+  .menue-knopf { display: inline-flex; }
+  .kopf .unterzeile { display: none; }
+
+  /* Aufgeklappt steht die Liste im normalen Fluss direkt unter dem
+     Kopf (kein position:fixed – das verrutscht auf manchen Handys
+     unter die Kopfleiste). navigation.js scrollt dafuer nach oben. */
+  .seitennav {
+    display: none; position: static;
+    max-height: none; padding: 1.25rem 0 1.5rem;
+    border-bottom: 1px solid var(--agp-border);
+    font-size: 1rem;
+  }
+  .nav-offen .seitennav { display: block; }
+  .nav-offen .inhalt { display: none; }     /* Menue statt Inhalt, wie eine eigene Seite */
+  .seitennav a, .nav-bald { padding: .5rem .9rem; }
+
+  .kompetenzen { grid-template-columns: 1fr; }
+}
+
+/* Ohne JavaScript bleibt die Leiste sichtbar (nur der Notlink) */
+@media (max-width: 900px) { .ohne-js .seitennav { display: block; position: static; } }
+
+@media (max-width: 480px) {
+  .meldungen li { grid-template-columns: 1fr; gap: .1rem; }
+}
+
 /* Wer Bewegung abgestellt hat, bekommt keine */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
