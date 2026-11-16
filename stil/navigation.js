@@ -10,7 +10,7 @@
 
    Jede Seite braucht dafür nur:
      <nav id="seitennav" aria-label="Hauptnavigation">
-       <a href="index-nav.html">Startseite</a>      ← Notlink ohne JS
+       <a href="index.html">Startseite</a>          ← Notlink ohne JS
      </nav>
      <script src="stil/navigation.js" defer></script>
    --------------------------------------------------------------- */
@@ -18,9 +18,7 @@
 (function () {
   'use strict';
 
-  // Solange der Entwurf neben der alten Startseite liegt, zeigt
-  // "Startseite" auf index-nav.html. Beim Umstellen hier auf index.html.
-  var START = 'index-nav.html';
+  var START = 'index.html';
 
   var NAVIGATION = [
     { rubrik: 'AGP Control', punkte: [

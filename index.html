@@ -3,152 +3,196 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AGP Control – Regelungstechnik</title>
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: 'Segoe UI', Arial, sans-serif;
-      background: #f0f2f5;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 2rem 1rem;
-    }
-    header {
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-    header h1 { font-size: 2.2rem; color: #1565c0; font-weight: 700; letter-spacing: 1px; }
-    header p  { margin-top: 0.4rem; color: #555; font-size: 1.05rem; }
-
-    .section { width: 100%; max-width: 860px; margin-bottom: 2rem; }
-
-    /* Kurzbeschreibung */
-    .description {
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-      padding: 1.5rem 2rem;
-    }
-    .description h2 { font-size: 1rem; color: #1565c0; font-weight: 700; margin-bottom: 0.6rem; }
-    .description p  { font-size: 0.9rem; color: #444; line-height: 1.6; margin-bottom: 0.5rem; }
-    .description a  { color: #1565c0; font-size: 0.88rem; }
-
-    /* Schulungs-Karten */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.2rem;
-    }
-    .card {
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.09);
-      padding: 2rem 1.5rem;
-      text-decoration: none;
-      color: inherit;
-      transition: box-shadow 0.2s, transform 0.2s;
-      display: flex;
-      flex-direction: column;
-      gap: 0.6rem;
-    }
-    .card:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.15); transform: translateY(-3px); }
-    .card-icon { font-size: 2rem; }
-    .card h2   { font-size: 1.1rem; font-weight: 700; }
-    .card p    { font-size: 0.88rem; color: #666; line-height: 1.5; }
-    .card .tag {
-      display: inline-block;
-      font-size: 0.75rem;
-      padding: 2px 10px;
-      border-radius: 20px;
-      margin-top: 0.3rem;
-      width: fit-content;
-    }
-    .siemens h2  { color: #009999; }
-    .siemens .tag { background: #e0f7f7; color: #009999; }
-    .hdt h2      { color: #1565c0; }
-    .hdt .tag    { background: #e3f2fd; color: #1565c0; }
-    .vibe h2     { color: #6a1b9a; }
-    .vibe .tag   { background: #f3e5f5; color: #6a1b9a; }
-
-    /* Kontakt */
-    .contact {
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-      padding: 1.5rem 2rem;
-    }
-    .contact h2 { font-size: 1rem; color: #1565c0; font-weight: 700; margin-bottom: 0.8rem; }
-    .contact p  { font-size: 0.88rem; color: #444; line-height: 1.8; }
-    .contact a  { color: #1565c0; text-decoration: none; }
-    .contact a:hover { text-decoration: underline; }
-
-    footer { margin-top: 1rem; color: #aaa; font-size: 0.82rem; text-align: center; }
-  </style>
+  <title>AGP Control – Regelungstechnik in der Praxis</title>
+  <meta name="description" content="Seminare zur praxisorientierten Auslegung von Regelkreisen und interaktive Web-Programme zur Streckenidentifikation und Reglereinstellung." />
+  <link rel="stylesheet" href="stil/agp-design-system.css" />
+  <link rel="stylesheet" href="stil/seite.css" />
+  <script src="stil/navigation.js" defer></script>
 </head>
-<body>
+<body class="ohne-js">
 
-  <header>
-    <h1>AGP Control</h1>
-    <p>Interaktive Werkzeuge für Regelungstechnik-Schulungen</p>
-  </header>
+<a class="skip" href="#inhalt">Zum Inhalt springen</a>
 
-  <!-- Kurzbeschreibung AGP_H -->
-  <div class="section">
-    <div class="description">
-      <h2>Regelungstechnik: Praxisbezogene Auslegung von Reglern</h2>
-      <p>
-        Praxisorientiertes Seminar zur Auslegung von PI/PID-Reglern – von der
-        Parameterbestimmung der Regelstrecke bis zur Regleroptimierung.
-        Aufeinander abgestimmte Methoden zur Streckenidentifikation und
-        theoretisch fundierte Einstellregeln für Reglerparameter werden
-        vermittelt und durch Rechnersimulationen (ca. 60&nbsp;% der Seminarzeit)
-        direkt eingeübt.
-      </p>
-      <p>
-        Themen: PI/PID-Regler, Sprungantwort-Analyse, Kaskadenregelung,
-        Störgrößenaufschaltung, Anti-Windup, Mehrgrößenregelung.
-      </p>
-      <a href="hdt-kurs.html">→ Vollständige Kursbeschreibung</a>
-    </div>
+<!-- Die Navigationsleiste steht NICHT hier, sondern in stil/navigation.js. -->
+
+<header class="kopf">
+  <div class="wrap">
+    <a class="marke" href="index.html"><b>AGP</b> Control</a>
+    <span class="unterzeile">Regelungstechnik in der Praxis</span>
+    <!-- Menü-Knopf für schmale Bildschirme setzt navigation.js hier ein -->
   </div>
+</header>
 
-  <!-- Schulungs-Karten -->
-  <div class="section">
-    <div class="grid">
-      <a class="card siemens" href="siemens.html">
-        <div class="card-icon">🏭</div>
-        <h2>AGP_S Schulungen</h2>
-        <p>Werkzeuge und Simulationen für AGP_S-Schulungsveranstaltungen.</p>
-      </a>
-      <a class="card hdt" href="hdt.html">
-        <div class="card-icon">🎓</div>
-        <h2>AGP_H Schulungen</h2>
-        <p>Werkzeuge und Simulationen für AGP_H-Seminare zur Regelungstechnik.</p>
-      </a>
-      <a class="card vibe" href="vibecoding.html">
-        <div class="card-icon">🚀</div>
-        <h2>VibeCoding</h2>
-        <p>Werkzeuge zum Kurs „Vibe Coding“ – KI-gestützt programmieren ohne Vorkenntnisse.</p>
-      </a>
-    </div>
-  </div>
+<div class="rahmen">
 
-  <!-- Kontakt -->
-  <div class="section">
-    <div class="contact">
+  <nav id="seitennav" class="seitennav" aria-label="Hauptnavigation">
+    <a href="index.html">Startseite</a>
+  </nav>
+
+  <main id="inhalt" class="inhalt">
+
+    <!-- ===================== Willkommen ===================== -->
+    <section>
+      <h1>Regelkreise auslegen – und sofort ausprobieren</h1>
+      <p class="vorspann">
+        Seminare zur praxisorientierten Auslegung von Regelkreisen: von der
+        Parameterbestimmung der Strecke bis zur Reglereinstellung. Rund
+        60&nbsp;% der Zeit wird gerechnet und simuliert – mit interaktiven
+        Programmen, die den Teilnehmern auch nach dem Seminar bleiben.
+      </p>
+
+      <figure class="hero-bild">
+        <svg viewBox="0 0 420 250" role="img" aria-label="Sprungantwort eines geregelten Systems: Führungsgröße als Sprung, Regelgröße mit leichtem Überschwingen">
+          <g stroke="var(--agp-border)" stroke-width="1">
+            <line x1="45" y1="50"  x2="400" y2="50"  stroke-dasharray="3 5" />
+            <line x1="45" y1="110" x2="400" y2="110" stroke-dasharray="3 5" />
+            <line x1="45" y1="170" x2="400" y2="170" stroke-dasharray="3 5" />
+          </g>
+          <path d="M45 20 V215 H405" stroke="var(--agp-ink-faint)" stroke-width="1.5" fill="none" stroke-linecap="round" />
+          <text x="52" y="16" font-size="11" fill="var(--agp-ink-faint)">y, w</text>
+          <text x="382" y="233" font-size="11" fill="var(--agp-ink-faint)">t</text>
+          <path d="M45 190 H95 V70 H400" fill="none"
+                stroke="var(--agp-accent)" stroke-width="2" stroke-dasharray="6 4" />
+          <path d="M45 190 H95
+                   C 120 190 128 130 150 98
+                   C 168 72 182 52 202 56
+                   C 224 60 232 84 252 82
+                   C 272 80 280 64 302 68
+                   C 324 72 330 72 350 70
+                   H400"
+                fill="none" stroke="var(--agp-brand)" stroke-width="2.75"
+                stroke-linecap="round" stroke-linejoin="round" />
+          <g font-size="11" fill="var(--agp-ink-muted)">
+            <line x1="255" y1="196" x2="279" y2="196" stroke="var(--agp-accent)" stroke-width="2" stroke-dasharray="6 4" />
+            <text x="285" y="200">Führungsgröße</text>
+            <line x1="255" y1="213" x2="279" y2="213" stroke="var(--agp-brand)" stroke-width="2.75" />
+            <text x="285" y="217">Regelgröße</text>
+          </g>
+        </svg>
+        <figcaption>Sprungantwort eines PI-geregelten Kreises</figcaption>
+      </figure>
+
+      <dl class="kompetenzen">
+        <div>
+          <dt>Streckenidentifikation</dt>
+          <dd><ul>
+            <li>ZPK-Verfahren nach Schwarze</li>
+            <li>PT1TT über Wendetangente</li>
+            <li>Dreipunktmethode</li>
+          </ul></dd>
+        </div>
+        <div>
+          <dt>Reglerauslegung</dt>
+          <dd><ul>
+            <li>PI/PID, Kaskade, Störgrößenaufschaltung</li>
+            <li>Anti-Windup</li>
+            <li>Einstellregeln CHR, Ziegler/Nichols, Latzel</li>
+          </ul></dd>
+        </div>
+        <div>
+          <dt>KI-gestütztes Programmieren</dt>
+          <dd><ul>
+            <li>Vibe Coding ohne Vorkenntnisse</li>
+            <li>Eigene Messdaten auswerten</li>
+            <li>Claude Code in der SPS</li>
+          </ul></dd>
+        </div>
+      </dl>
+    </section>
+
+    <!-- ===================== Seminare ===================== -->
+    <section id="seminare">
+      <h2>Seminare</h2>
+      <div class="raster raster-2">
+        <a class="karte" href="hdt-kurs.html">
+          <h3>Auslegung von Regelkreisen</h3>
+          <p>Aufeinander abgestimmte Methoden der Streckenidentifikation und
+             theoretisch fundierte Einstellregeln – mit hohem Rechneranteil.</p>
+          <span class="pfeil">Kursbeschreibung →</span>
+        </a>
+        <a class="karte" href="siemens.html">
+          <h3>AGP_S Inhouse-Schulung</h3>
+          <p>PT1TT-Verfahren über Wendetangente und Dreipunktmethode, dazu die
+             passende Reglerparametrierung nach CHR und Ziegler/Nichols.</p>
+          <span class="pfeil">Werkzeuge der Schulung →</span>
+        </a>
+        <a class="karte" href="vibecoding.html">
+          <h3>Vibe Coding</h3>
+          <p>Dreitägiger Hands-on-Einstieg in KI-gestützte Entwicklung – für
+             Techniker, Meister und Ingenieure, ohne Programmierkenntnisse.</p>
+          <span class="pfeil">Zum Kurs →</span>
+        </a>
+        <div class="karte">
+          <h3>Claude Code in der SPS</h3>
+          <p>KI-gestützte SPS-Programmierung mit CODESYS.</p>
+          <span class="pfeil" style="color:var(--agp-ink-faint)">Beschreibung folgt</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Aktuelles ===================== -->
+    <section id="aktuelles">
+      <h2>Aktuelles</h2>
+      <div class="meldungen">
+        <!-- Neueste Meldung oben. Platzhalter – Inhalte bitte ersetzen. -->
+        <ol>
+          <li><time>[TT.MM.JJJJ]</time><span>[Meldung, z.&nbsp;B. neuer Seminartermin]</span></li>
+          <li><time>[TT.MM.JJJJ]</time><span>[Meldung, z.&nbsp;B. neues Werkzeug online]</span></li>
+          <li><time>[TT.MM.JJJJ]</time><span>[Meldung]</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===================== Über mich ===================== -->
+    <section id="profil">
+      <h2>Über mich</h2>
+      <div class="profil">
+        <div class="profil-bild">Porträtfoto<br />(noch einzusetzen)</div>
+        <div>
+          <p><strong>Prof. Dr.-Ing. Axel Graeser</strong></p>
+          <p>
+            <!-- ENTWURFSTEXT – bitte durch die eigenen Angaben ersetzen. -->
+            Seminare zur Regelungstechnik für Ingenieure, Techniker und Meister
+            aus der Industrie. Schwerpunkt ist die Lücke zwischen Theorie und
+            Anlage: Verfahren, die sich an einer realen Sprungantwort anwenden
+            lassen, und Reglereinstellungen, die man begründen kann.
+          </p>
+          <p class="platzhalter">
+            [Hier fehlen noch: beruflicher Werdegang, Lehrtätigkeit,
+            Arbeitsschwerpunkte, ggf. Veröffentlichungen.]
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Kontakt ===================== -->
+    <section id="kontakt">
       <h2>Kontakt</h2>
-      <p>
-        Prof. Dr.-Ing. Axel Graeser<br>
-        Posener Straße 9 · 40670 Meerbusch<br>
-        Tel.: <a href="tel:+491777979036">+49 (0) 177-79 79 036</a><br>
-        E-Mail: <a href="mailto:agpgraeser@outlook.com">agpgraeser@outlook.com</a>
-      </p>
-    </div>
-  </div>
+      <div class="kontakt-karte">
+        <dl>
+          <dt>Anschrift</dt>
+          <dd>Prof. Dr.-Ing. Axel Graeser<br />Posener Straße 9 · 40670 Meerbusch</dd>
+          <dt>Telefon</dt>
+          <dd><a href="tel:+491777979036">+49 177 79 79 036</a></dd>
+          <dt>E-Mail</dt>
+          <dd><a href="mailto:agpgraeser@outlook.com">agpgraeser@outlook.com</a></dd>
+        </dl>
+        <a class="btn btn-voll" href="mailto:agpgraeser@outlook.com">E-Mail schreiben</a>
+      </div>
+    </section>
 
-  <footer>agpcontrol.com &nbsp;|&nbsp; Regelungstechnik Tools</footer>
+  </main>
+</div>
+
+<footer class="fuss">
+  <div class="wrap" style="width:min(1240px, 100% - 2.5rem)">
+    <span>© 2026 AGP Control · Prof. Dr.-Ing. Axel Graeser</span>
+    <span>
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+    </span>
+  </div>
+</footer>
 
 </body>
 </html>

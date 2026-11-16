@@ -30,18 +30,8 @@ a { color: var(--agp-brand); }
 }
 .skip:focus { left: 1rem; top: 1rem; }
 
-/* ---------- Kopfleiste ---------- */
+/* ---------- Marke (Kopfleiste) ---------- */
 
-.topbar {
-  position: sticky; top: 0; z-index: 50;
-  background: color-mix(in srgb, var(--agp-surface) 88%, transparent);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--agp-border);
-}
-.topbar .wrap {
-  display: flex; align-items: center; justify-content: space-between;
-  gap: 1rem; min-height: 64px;
-}
 .marke {
   display: inline-flex; align-items: baseline; gap: .45rem;
   font-size: 1.15rem; font-weight: 700; letter-spacing: .01em;
@@ -49,13 +39,6 @@ a { color: var(--agp-brand); }
 }
 .marke b { color: var(--agp-brand); }
 
-.hauptnav { display: flex; align-items: center; gap: .35rem; flex-wrap: wrap; }
-.hauptnav a {
-  padding: .45rem .7rem; border-radius: var(--agp-r-sm);
-  color: var(--agp-ink-muted); text-decoration: none;
-  font-size: var(--agp-fs-sm, .88rem); font-weight: 600;
-}
-.hauptnav a:hover { color: var(--agp-brand); background: var(--agp-brand-tint); }
 
 /* ---------- Schaltflaechen ---------- */
 
@@ -75,25 +58,8 @@ a { color: var(--agp-brand); }
   border-color: var(--agp-border-strong);
 }
 .btn-rand:hover { border-color: var(--agp-brand); }
-.hauptnav .btn { padding: .45rem .9rem; font-size: .88rem; }
 
-/* ---------- Aufmacher ---------- */
-
-.hero { padding: clamp(2.5rem, 7vw, 5rem) 0 clamp(2rem, 5vw, 3.5rem); }
-.hero .wrap {
-  display: grid; grid-template-columns: 1.05fr .95fr;
-  gap: clamp(1.5rem, 4vw, 3rem); align-items: center;
-}
-.hero h1 {
-  margin: 0 0 1rem;
-  font-size: clamp(1.9rem, 4.2vw, 3rem); line-height: 1.15;
-  letter-spacing: -0.02em; color: var(--agp-brand-deep);
-}
-.hero .vorspann {
-  margin: 0 0 1.75rem; max-width: 46ch;
-  font-size: clamp(1rem, 1.6vw, 1.12rem); color: var(--agp-ink-muted);
-}
-.hero-knoepfe { display: flex; gap: .75rem; flex-wrap: wrap; }
+/* ---------- Grafik im Rahmen ---------- */
 
 .hero-bild {
   background: var(--agp-surface); border: 1px solid var(--agp-border);
@@ -196,7 +162,6 @@ a.karte:hover {
 /* ---------- Schmale Bildschirme ---------- */
 
 @media (max-width: 860px) {
-  .hero .wrap { grid-template-columns: 1fr; }
   .raster-3, .raster-2 { grid-template-columns: 1fr; }
   .profil { grid-template-columns: 1fr; }
   .profil-bild { max-width: 180px; }
@@ -204,23 +169,8 @@ a.karte:hover {
   .kontakt-karte .btn { justify-self: start; }
 }
 
-/* Unter 640px passt die Leiste nicht mehr in eine Zeile: Marke oben,
-   Navigation als eigene Zeile darunter – statt eines Umbruchs quer
-   durch die Mitte. */
-@media (max-width: 640px) {
-  .topbar .wrap { flex-wrap: wrap; min-height: 0; padding-block: .5rem 0; }
-  .hauptnav {
-    order: 2; width: 100%;
-    justify-content: space-between; gap: .25rem;
-    margin-top: .5rem; padding: .35rem 0 .5rem;
-    border-top: 1px solid var(--agp-border);
-  }
-  .hauptnav a { padding: .35rem .45rem; font-size: .82rem; }
-  .hauptnav .btn { padding: .35rem .8rem; }
-}
-
 /* ===============================================================
-   Layout mit linker Navigationsleiste (Entwurf index-nav.html)
+   Layout mit linker Navigationsleiste
    Die Leiste selbst fuellt stil/navigation.js.
    =============================================================== */
 
