@@ -270,6 +270,36 @@ a.karte:hover {
 
 .platzhalter { color: var(--agp-ink-faint); font-size: .85rem; }
 
+/* ---------- Textseiten (Impressum, Datenschutz …) ---------- */
+
+.textseite { max-width: 72ch; }
+.textseite h2 { font-size: 1.1rem; margin: 2rem 0 .5rem; }
+.textseite p, .textseite ul, .textseite address { margin: 0 0 .9rem; }
+.textseite address { font-style: normal; }
+.textseite ul { padding-left: 1.2rem; }
+.textseite li { margin-bottom: .35rem; }
+.textseite table { border-collapse: collapse; width: 100%; margin: 0 0 1rem; font-size: .9rem; }
+.textseite th, .textseite td {
+  text-align: left; vertical-align: top;
+  padding: .45rem .6rem; border-bottom: 1px solid var(--agp-border);
+}
+.textseite th { color: var(--agp-ink-muted); font-weight: 650; }
+.textseite .stand { color: var(--agp-ink-faint); font-size: .85rem; }
+@media (max-width: 560px) {
+  .textseite table, .textseite tbody, .textseite tr, .textseite td { display: block; }
+  .textseite thead { display: none; }
+  .textseite tr { padding: .5rem 0; border-bottom: 1px solid var(--agp-border); }
+  .textseite td { border: 0; padding: .1rem 0; }
+  .textseite td:first-child { font-weight: 650; }
+}
+
+/* Sichtbar markierte Luecke – vor dem Veroeffentlichen fuellen */
+.offen {
+  background: var(--agp-warn-bg); color: var(--agp-warn);
+  border: 1px solid var(--agp-warn-brd); border-radius: var(--agp-r-sm);
+  padding: .05rem .35rem; font-size: .88em;
+}
+
 /* ---------- schmal: Leiste wird zum Klappmenue ---------- */
 
 @media (max-width: 900px) {
