@@ -24,7 +24,7 @@
     { rubrik: 'AGP Control', punkte: [
       { text: 'Startseite',   href: START },
       { text: 'Aktuelles',    href: START + '#aktuelles' },
-      { text: 'Über mich',    href: START + '#profil' }
+      { text: 'Über mich',    href: 'ueber-mich.html' }
     ]},
     { rubrik: 'Seminare', punkte: [
       { text: 'Auslegung von Regelkreisen', href: 'hdt-kurs.html' },

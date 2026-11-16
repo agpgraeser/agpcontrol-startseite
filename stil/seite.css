@@ -336,6 +336,29 @@ a.karte:hover {
 }
 .btn-klein:hover { border-color: var(--agp-brand); color: var(--agp-brand); }
 
+/* ---------- Werdegang (ueber-mich.html, about.html) ---------- */
+
+.lauf { list-style: none; margin: 0 0 1.5rem; padding: 0; max-width: 78ch; }
+.lauf li {
+  display: grid; grid-template-columns: 7.5rem minmax(0, 1fr); gap: 1rem;
+  padding: .5rem 0; border-top: 1px solid var(--agp-border);
+}
+.lauf li:first-child { border-top: 0; }
+.lauf .jahr { color: var(--agp-accent); font-weight: 650; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.inhalt h3.lauf-block {
+  margin: 1.5rem 0 .35rem; font-size: .78rem; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--agp-ink-muted);
+}
+.gebiete { margin: 0; max-width: 78ch; }
+.gebiete dt { font-weight: 700; color: var(--agp-brand-deep); margin-top: .9rem; }
+.gebiete dd { margin: .15rem 0 0; color: var(--agp-ink-muted); }
+.sprachwahl { font-size: .88rem; margin: -.5rem 0 1.5rem; }
+.kopf-person { display: grid; grid-template-columns: 160px 1fr; gap: 1.5rem; align-items: center; margin-bottom: 1rem; }
+@media (max-width: 560px) {
+  .lauf li { grid-template-columns: 1fr; gap: 0; }
+  .kopf-person { grid-template-columns: 110px 1fr; gap: 1rem; }
+}
+
 /* Kursbeschreibung */
 .inhalt ol.inhaltsliste { padding-left: 1.3rem; max-width: 72ch; }
 .inhalt ol.inhaltsliste li { margin-bottom: .45rem; }
