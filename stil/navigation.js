@@ -28,8 +28,9 @@
     ]},
     { rubrik: 'Seminare', punkte: [
       { text: 'Auslegung von Regelkreisen', href: 'hdt-kurs.html' },
-      { text: 'AGP_S Inhouse-Schulung',     href: 'siemens.html' },
-      { text: 'Vibe Coding',                href: 'vibecoding.html' },
+      // Voruebergehend ausgeblendet (2026-11-18), siehe index.html:
+      // { text: 'AGP_S Inhouse-Schulung',     href: 'siemens.html' },
+      // { text: 'Vibe Coding',                href: 'vibecoding.html' },
       { text: 'Claude Code in der SPS' }
     ]},
     { rubrik: 'Werkzeuge', punkte: [
@@ -41,8 +42,9 @@
       { text: 'Datenbetrachter',         href: 'https://datenbetrachter.agpcontrol.com/' }
     ]},
     { rubrik: 'Teilnehmer', punkte: [
-      { text: 'AGP_H Werkzeugseite', href: 'hdt.html' },
-      { text: 'AGP_S Werkzeugseite', href: 'siemens.html' },
+      // Voruebergehend ausgeblendet (2026-11-18):
+      // { text: 'AGP_H Werkzeugseite', href: 'hdt.html' },
+      // { text: 'AGP_S Werkzeugseite', href: 'siemens.html' },
       { text: 'Hinweise für IT',     href: 'it-info.html' }
     ]},
     { rubrik: 'Information', punkte: [
