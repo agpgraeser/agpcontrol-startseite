@@ -19,6 +19,32 @@
   status = 302
   force = true
 
+# Ebenso gesperrt (2026-11-19): AGP_S-Werkzeugseite und Werkzeugseite
+# Vibe Coding. Die Kursbeschreibung vibecoding-kurs.html bleibt offen.
+[[redirects]]
+  from = "/siemens"
+  to = "/"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/siemens.html"
+  to = "/"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/vibecoding"
+  to = "/"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/vibecoding.html"
+  to = "/"
+  status = 302
+  force = true
+
 # Web-App-Manifest der HdT-Kursseite mit korrektem Typ ausliefern
 [[headers]]
   for = "/*.webmanifest"
