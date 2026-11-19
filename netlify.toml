@@ -4,6 +4,21 @@
 [build]
   publish = "."   # Projektwurzel wird direkt veröffentlicht
 
+# AGP_H-Werkzeugseite gesperrt (2026-11-19, Axel): /hdt führt auf die
+# Startseite. force = true, weil Netlify sonst die vorhandene hdt.html
+# ausliefert. Zum Freischalten beide Blöcke löschen.
+[[redirects]]
+  from = "/hdt"
+  to = "/"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/hdt.html"
+  to = "/"
+  status = 302
+  force = true
+
 # Web-App-Manifest der HdT-Kursseite mit korrektem Typ ausliefern
 [[headers]]
   for = "/*.webmanifest"
