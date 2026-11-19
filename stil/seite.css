@@ -120,6 +120,32 @@ a.karte:hover {
   font-size: .88rem; font-weight: 650; color: var(--agp-brand);
 }
 
+/* Titelblock der Startseite: Überschrift + Unterzeile, zentriert */
+.titelblock { text-align: center; margin-bottom: 1.5rem; }
+.titelblock h1 { margin-bottom: .35rem; }
+.titelblock .unterzeile { margin: 0; font-size: 1.3rem; font-weight: 600;
+                          color: var(--agp-ink-muted); }
+
+/* Zitat unter der Hauptüberschrift der Startseite */
+.zitat { margin: -.25rem auto 1.75rem; padding-left: 1rem;
+         border-left: 3px solid var(--agp-brand-tint); width: fit-content; max-width: 46ch; }
+/* Bild unter dem Titelblock ebenfalls mittig */
+.inhalt .titelblock ~ .hero-bild { margin-left: auto; margin-right: auto; }
+.zitat blockquote { margin: 0; }
+.zitat p { margin: 0; font-size: .95rem; font-style: italic;
+           line-height: 1.55; color: var(--agp-ink-muted); }
+.zitat figcaption { margin-top: .4rem; font-size: .82rem; color: var(--agp-ink-faint); }
+
+/* Kurzfassungen der Kurse unter dem Bild – Karte mit zwei Links */
+.kurse { margin-bottom: 2rem; }
+.karte .kurs-links {
+  margin-top: auto; padding-top: 1rem;
+  display: flex; flex-wrap: wrap; gap: .4rem 1.25rem;
+  font-size: .88rem; font-weight: 650;
+}
+.karte .kurs-links a { color: var(--agp-brand); text-decoration: none; }
+.karte .kurs-links a:hover { text-decoration: underline; }
+
 /* Werkzeugliste: schmaler als die Seminarkarten */
 .werkzeug { padding: 1.1rem 1.25rem; }
 .werkzeug h3 { font-size: 1rem; margin-bottom: .25rem; }
