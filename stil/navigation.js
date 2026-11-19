@@ -31,7 +31,7 @@
       // Voruebergehend ausgeblendet (2026-11-18), siehe index.html:
       // { text: 'AGP_S Inhouse-Schulung',     href: 'siemens.html' },
       // { text: 'Vibe Coding',                href: 'vibecoding.html' },
-      { text: 'Claude Code in der SPS' }
+      { text: 'Vibe Coding mit KI',         href: 'vibecoding-kurs.html' }
     ]},
     { rubrik: 'Werkzeuge', punkte: [
       { text: 'PTn – ZPK-Verfahren',     href: 'https://ptn-zpk.agpcontrol.com/' },
