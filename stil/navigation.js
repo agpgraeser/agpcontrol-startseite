@@ -34,12 +34,15 @@
       { text: 'Vibe Coding mit KI',         href: 'vibecoding-kurs.html' }
     ]},
     { rubrik: 'Werkzeuge', punkte: [
-      { text: 'PTn – ZPK-Verfahren',     href: 'https://ptn-zpk.agpcontrol.com/' },
-      { text: 'PTn – Systemvergleich',   href: 'https://ptn-vergleich.agpcontrol.com/' },
-      { text: 'ZPK-Identifikation',      href: 'https://zpk-identifikation.agpcontrol.com/' },
-      { text: 'Regelkreis-Simulationen', href: 'https://regelkreissimulationen.agpcontrol.com/' },
-      { text: 'Reglerparameter',         href: 'https://reglerparameter.agpcontrol.com/' },
-      { text: 'Datenbetrachter',         href: 'https://datenbetrachter.agpcontrol.com/' }
+      // Beschreibungsseite statt Direktlink: sie weckt die Render-Programme
+      // vorab (stil/aufwecken.js), siehe STATUS.md 2026-11-23
+      { text: 'Übersicht',               href: 'werkzeuge.html' },
+      { text: 'PTn – ZPK-Verfahren',     href: 'werkzeuge.html#ptn-zpk' },
+      { text: 'PTn – Systemvergleich',   href: 'werkzeuge.html#ptn-vergleich' },
+      { text: 'ZPK-Identifikation',      href: 'werkzeuge.html#zpk-identifikation' },
+      { text: 'Regelkreis-Simulationen', href: 'werkzeuge.html#regelkreissimulationen' },
+      { text: 'Reglerparameter',         href: 'werkzeuge.html#reglerparameter' },
+      { text: 'Datenbetrachter',         href: 'werkzeuge.html#datenbetrachter' }
     ]},
     { rubrik: 'Teilnehmer', punkte: [
       // Voruebergehend ausgeblendet (2026-11-18):

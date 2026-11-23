@@ -442,3 +442,30 @@ a.karte:hover {
   .btn, .karte { transition: none; }
   .btn:hover, a.karte:hover { transform: none; }
 }
+
+
+/* ---------- Werkzeuge (werkzeuge.html, aufwecken.js) ---------- */
+
+.werkzeug { padding-top: .5rem; scroll-margin-top: 1rem; }
+.werkzeug + .werkzeug { border-top: 1px solid var(--agp-border); }
+.werkzeug-start {
+  display: flex; flex-wrap: wrap; align-items: center; gap: .5rem 1rem;
+}
+.werkzeug-status { font-size: .88rem; color: var(--agp-ink-muted); }
+.werkzeug-status::before { content: ""; }
+.werkzeug-status.ist-weckt::before,
+.werkzeug-status.ist-wartet::before,
+.werkzeug-status.ist-bereit::before,
+.werkzeug-status.ist-zaeh::before {
+  content: ""; display: inline-block; width: .6em; height: .6em;
+  margin-right: .45em; border-radius: 50%; vertical-align: .05em;
+  background: var(--agp-warn);
+}
+.werkzeug-status.ist-weckt::before,
+.werkzeug-status.ist-wartet::before { animation: werkzeug-puls 1.2s ease-in-out infinite; }
+.werkzeug-status.ist-bereit::before { background: var(--agp-accent); }
+@keyframes werkzeug-puls { 50% { opacity: .25; } }
+@media (prefers-reduced-motion: reduce) {
+  .werkzeug-status.ist-weckt::before,
+  .werkzeug-status.ist-wartet::before { animation: none; }
+}

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Werkzeuge – AGP Control</title>
+  <link rel="stylesheet" href="stil/agp-design-system.css" />
+  <link rel="stylesheet" href="stil/seite.css" />
+  <script src="stil/navigation.js" defer></script>
+  <script src="stil/aufwecken.js" defer></script>
+</head>
+<body class="ohne-js">
+
+<a class="skip" href="#inhalt">Zum Inhalt springen</a>
+
+<header class="kopf">
+  <div class="wrap">
+    <a class="marke" href="index.html"><b>AGP</b> Control</a>
+    <span class="unterzeile">Regelungstechnik und Vibe Coding</span>
+  </div>
+</header>
+
+<div class="rahmen">
+
+  <nav id="seitennav" class="seitennav" aria-label="Hauptnavigation">
+    <a href="index.html">Startseite</a>
+  </nav>
+
+  <main id="inhalt" class="inhalt">
+
+    <h1>Werkzeuge</h1>
+    <p class="vorspann">
+      Die Werkzeuge sind Web-Programme aus meinen Seminaren. Sie ersetzen frühere
+      MATLAB/Simulink-Programme und laufen ohne Installation im Browser. Der Weg ist
+      der des Praktikers: Sprungantwort messen, Streckenmodell bestimmen, Regler
+      auslegen, Regelkreis simulieren.
+    </p>
+    <p>
+      Die Programme sind für die Arbeit im Seminar erstellt. Sie setzen das dort
+      vermittelte Vorgehen voraus und ersetzen keine Auslegung durch Fachleute.
+    </p>
+    <div class="kasten">
+      <strong>Hinweis zum Start:</strong> Die Rechenprogramme laufen auf einem Server,
+      der nach längerer Pause schläft. Der erste Aufruf kann dann bis zu einer Minute
+      dauern; danach reagieren sie sofort. Diese Seite startet ein Programm schon,
+      während Sie seine Beschreibung lesen.
+    </div>
+
+    <section class="werkzeug" id="ptn-zpk" data-wecken="https://ptn-zpk.agpcontrol.com/">
+      <h2>PT<sub>n</sub> – ZPK-Verfahren</h2>
+      <p>
+        Bestimmt aus einer gemessenen Sprungantwort ein PT<sub>n</sub>-Streckenmodell
+        nach der Zeit-Prozent-Kennwert-Methode. Aus den Zeiten, zu denen 10&nbsp;%,
+        50&nbsp;% und 90&nbsp;% des Endwerts erreicht sind, folgen Ordnung&nbsp;<i>n</i>
+        und Zeitkonstante&nbsp;<i>T</i>. Die Nachbarordnungen <i>n</i>−1 und <i>n</i>+1
+        werden mitgerechnet, damit sich vergleichen lässt, welches Modell die Messung
+        am besten trifft. Messdaten lassen sich aus Excel einlesen.
+      </p>
+      <p class="werkzeug-start">
+        <a class="btn btn-voll" data-oeffnen href="https://ptn-zpk.agpcontrol.com/">Programm öffnen</a>
+        <span class="werkzeug-status" aria-live="polite"></span>
+      </p>
+    </section>
+
+    <section class="werkzeug" id="ptn-vergleich" data-wecken="https://ptn-vergleich.agpcontrol.com/">
+      <h2>PT<sub>n</sub> – Systemvergleich</h2>
+      <p>
+        Zeichnet bis zu vier PT<sub>n</sub>-Streckenmodelle gemeinsam – etwa die Modelle,
+        die mehrere Teilnehmer für dieselbe Strecke bestimmt haben. Liegt eine
+        Referenzmessung vor, vergleicht das Programm die Modelle objektiv über das
+        Fehlerintegral.
+      </p>
+      <p class="werkzeug-start">
+        <a class="btn btn-voll" data-oeffnen href="https://ptn-vergleich.agpcontrol.com/">Programm öffnen</a>
+        <span class="werkzeug-status" aria-live="polite"></span>
+      </p>
+    </section>
+
+    <section class="werkzeug" id="zpk-identifikation" data-wecken="https://zpk-identifikation.agpcontrol.com/">
+      <h2>ZPK-Identifikation</h2>
+      <p>
+        Identifikation am geschlossenen Regelkreis. Das Programm bestimmt die Parameter
+        der Strecke (ZPK-S) und des geschlossenen Kreises (ZPK-H) aus den
+        Zeit-Prozent-Kennwerten und schätzt daraus mit den bekannten PI- bzw.
+        PID-Reglerparametern die Streckenparameter (ZPK-E) – nützlich, wenn Messungen
+        nur am geschlossenen Regelkreis möglich sind. Es ist ein reines Rechenprogramm,
+        vorerst ohne Datenimport und Grafik.
+      </p>
+      <p class="werkzeug-start">
+        <a class="btn btn-voll" data-oeffnen href="https://zpk-identifikation.agpcontrol.com/">Programm öffnen</a>
+        <span class="werkzeug-status" aria-live="polite"></span>
+      </p>
+    </section>
+
+    <section class="werkzeug" id="regelkreissimulationen" data-wecken="https://regelkreissimulationen.agpcontrol.com/">
+      <h2>Regelkreis-Simulationen</h2>
+      <p>
+        Simuliert Regelkreise auf Basis eines Zustandsmodells der Strecke, mit beliebigen
+        Anfangszuständen und um einen Arbeitspunkt. Die Strecke wird auf einer eigenen
+        Seite eingegeben; Reglertyp und Simulationsart sind wählbar. Derzeit nur für
+        Strecken mit Ausgleich; realisiert sind P-, PI-, PID- und PIDT<sub>1</sub>-Regler.
+      </p>
+      <p class="werkzeug-start">
+        <a class="btn btn-voll" data-oeffnen href="https://regelkreissimulationen.agpcontrol.com/">Programm öffnen</a>
+        <span class="werkzeug-status" aria-live="polite"></span>
+      </p>
+    </section>
+
+    <section class="werkzeug" id="reglerparameter" data-wecken="https://reglerparameter.agpcontrol.com/">
+      <h2>Reglerparameter</h2>
+      <p>
+        Berechnet Reglerparameter aus zuvor identifizierten Streckenparametern:
+        Betragsanpassung nach Latzel (PT<sub>n</sub>-Modell, PI-Regler) sowie die
+        Einstellregeln nach Chien-Hrones-Reswick und Ziegler-Nichols
+        (PT<sub>1</sub>T<sub>T</sub>-Modell, P-, PI-, PID-Regler).
+      </p>
+      <p class="werkzeug-start">
+        <a class="btn btn-voll" data-oeffnen href="https://reglerparameter.agpcontrol.com/">Programm öffnen</a>
+        <span class="werkzeug-status" aria-live="polite"></span>
+      </p>
+    </section>
+
+    <section class="werkzeug" id="datenbetrachter">
+      <h2>Datenbetrachter</h2>
+      <p>
+        Zeigt Messdaten und Zeitverläufe an – aus CSV- und Excel-Dateien sowie aus den
+        ZIP-Exporten der Handy-App phyphox. Die Dateien werden im Browser gelesen und
+        nicht hochgeladen – die Messdaten verlassen den eigenen Rechner nicht.
+      </p>
+      <p class="werkzeug-start">
+        <a class="btn btn-voll" href="https://datenbetrachter.agpcontrol.com/">Programm öffnen</a>
+      </p>
+    </section>
+
+  </main>
+</div>
+
+<footer class="fuss">
+  <div class="wrap" style="width:min(1240px, 100% - 2.5rem)">
+    <span>© 2026 AGP Control · Prof. Dr.-Ing. Axel Graeser</span>
+    <span>
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+    </span>
+  </div>
+</footer>
+
+</body>
+</html>
