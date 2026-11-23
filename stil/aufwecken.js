@@ -114,13 +114,22 @@
     liste.push(w);
   });
 
-  // Wecken, sobald die Beschreibung zur Hälfte im Bild ist
+  // Wecken, sobald die Beschreibung zur Hälfte im Bild ist und dort
+  // VERWEILEN_MS bleibt – beim Durchscrollen (oder beim Sprung auf einen
+  // Anker) werden die übrigen Programme nicht mitgeweckt.
+  var VERWEILEN_MS = 1500;
   if ('IntersectionObserver' in window) {
     var beobachter = new IntersectionObserver(function (eintraege) {
       eintraege.forEach(function (e) {
+        var a = e.target;
         if (e.isIntersecting) {
-          e.target._werkzeug.wecken();
-          beobachter.unobserve(e.target);
+          if (!a._uhr) a._uhr = setTimeout(function () {
+            a._werkzeug.wecken();
+            beobachter.unobserve(a);
+          }, VERWEILEN_MS);
+        } else if (a._uhr) {
+          clearTimeout(a._uhr);
+          a._uhr = null;
         }
       });
     }, { threshold: 0.5 });
