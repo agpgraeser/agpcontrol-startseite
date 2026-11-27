@@ -19,6 +19,21 @@
   status = 302
   force = true
 
+# Freigabe der AGP_S-Werkzeugseite für einzelne Teilnehmer (2026-11-27, Axel):
+# nicht verlinkte Adresse, liefert siemens.html aus (Rewrite, Adresse bleibt
+# stehen). Muss VOR der Sperre von /siemens.html stehen. Zum Zurückziehen
+# diesen Block löschen bzw. den Code wechseln.
+[[redirects]]
+  from = "/s-wmokey7x"
+  to = "/siemens.html"
+  status = 200
+  force = true
+
+[[headers]]
+  for = "/s-wmokey7x"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
 # Ebenso gesperrt (2026-11-19): AGP_S-Werkzeugseite und Werkzeugseite
 # Vibe Coding. Die Kursbeschreibung vibecoding-kurs.html bleibt offen.
 [[redirects]]
